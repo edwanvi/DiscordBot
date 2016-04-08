@@ -54,4 +54,4 @@ async def on_message(message):
         echo = message.content[6:]
         await client.send_message(message.channel, echo)
 
-client.run('tkdberger@gmail.com', 'full_leobitz')
+client.run(username, password)
