@@ -1,7 +1,18 @@
 import discord
 import asyncio
 
+# create a new Client for the bot to run on.
 client = discord.Client()
+# Open the file that contains the username and password for the account.
+datafile = open('creds.txt')
+for line in datafile:
+    if line.startswith('u:'):
+        username = line[2:]
+    elif line.startswith('p:'):
+        password = line[2:]
+    else:
+        print("Input file not valid. Terminating.")
+        exit()
 
 @client.event
 async def on_ready():
