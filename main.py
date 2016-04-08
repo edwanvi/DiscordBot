@@ -23,5 +23,16 @@ async def on_message(message):
     elif message.content.startswith('!sleep'):
         await asyncio.sleep(5)
         await client.send_message(message.channel, 'Done sleeping')
+    elif message.content.startswith('!robot'):
+        await client.send_message(message.channel, 'BLEEP BLOOP')
+    elif message.content == '!cease':
+        await client.send_message(message.channel, 'Authenticating...')
+        author = message.author
+        authorname = author.name
+        if authorname == 'magi093':
+            await client.send_message(message.channel, 'Ceasing.')
+            await client.logout()
+        else:
+            await client.send_message(message.channel, "Sorry, you don't have the ability to do that.")
 
-client.run('email', 'password')
+client.run('tkdberger@gmail.com', 'full_leobitz')
