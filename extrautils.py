@@ -2,14 +2,18 @@
 Basically a stupid module of stupid functions for a stupid project.
 Yeah.
 """
+
+
 def getCreds(filename, cred):
     # Open the file that contains the username and password for the account.
     datafile = open(filename)
     for line in datafile:
         if line.startswith('u:'):
             username = line[2:]
+            username = username.rstrip()
         elif line.startswith('p:'):
             password = line[2:]
+            password = password.rstrip()
         else:
             print("Input file not valid. Terminating.")
             exit()

@@ -22,7 +22,11 @@ async def on_message(message):
         async for log in client.logs_from(message.channel, limit=100):
             if log.author == message.author:
                 counter += 1
-        await client.edit_message(tmp, 'You have {} messages.'.format(counter))
+        await client.edit_message(tmp, 'You have {} messages, '.format(counter) + message.author.name)
+
+    # we do not want the bot to reply to itself
+    #elif message.author == client.user:
+    #    return
 
     elif message.content.startswith('?sleep'):
         await asyncio.sleep(5)
@@ -37,8 +41,8 @@ async def on_message(message):
     elif message.content == '?cease':
         await client.send_message(message.channel, 'Authenticating...')
         author = message.author
-        authorname = author.name
-        if authorname == 'magi093':
+        authorname = author.id
+        if authorname == '164342765394591744':
             await client.send_message(message.channel, 'Ceasing.')
             await client.logout()
         else:
@@ -46,6 +50,10 @@ async def on_message(message):
 
     elif message.content.startswith('?echo'):
         echo = message.content[6:]
-        await client.send_message(message.channel, echo)
+        echoverify = message.content[6:12]
+        if echoverify == '?echo ' or echoverify == '?echo':
+            return
+        else:
+            await client.send_message(message.channel, echo)
 
 client.run(username, password)
