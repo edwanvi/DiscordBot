@@ -10,7 +10,16 @@ import extrautils
 username = extrautils.getCreds('creds.txt', 'username')
 password = extrautils.getCreds('creds.txt', 'password')
 
+helptext = " \n".join(
+        [
+            "`?help`: this text\n"
+            "`?test`: See how many times the bot has seen you speak\n"
+            "`?robot`: BLEEP BLOOP\n"
+            "`?echo`: have the robot repeat you\n"
+            "Debug commands:\n"
+            "`?cease`: stop the bot. Can only be executed by @magi093."
+        ])
 
 async def send_help(client, message):
     print("function was called by " + message.author.name)
-    await client.send_message(message.channel, "Sorry, you don't have the ability to do that.")
+    await client.send_message(message.channel, "Oh did you want some help? \n" + helptext)
