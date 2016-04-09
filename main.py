@@ -1,6 +1,7 @@
 import discord
 import asyncio
 import extrautils
+import commands
 
 # create a new Client for the bot to run on.
 client = discord.Client()
@@ -53,5 +54,9 @@ async def on_message(message):
             return
         else:
             await client.send_message(message.channel, echo)
+
+    # run commands from commands.py
+    elif message.content.startswith("?help"):
+        await commands.send_help(message)
 
 client.run(username, password)
