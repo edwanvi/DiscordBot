@@ -3,8 +3,6 @@ The commands that aren't in main.py.
 I hope i can get this to work.
 """
 # Import the needed modules.
-import discord
-import asyncio
 import extrautils
 
 # create a new Client for the bot to run on.
