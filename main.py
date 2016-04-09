@@ -60,5 +60,8 @@ async def on_message(message):
         await commands.send_help(client, message)
     elif message.content.startswith("?heythere"):
         await commands.hey_buddy(client, message)
+    elif message.content.startswith("?github"):
+        github_name = message.content[8:]
+        await commands.github(client, message, github_name)
 
 client.run(username, password)
