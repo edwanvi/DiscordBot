@@ -24,10 +24,6 @@ async def on_message(message):
                 counter += 1
         await client.edit_message(tmp, 'You have {} messages, '.format(counter) + message.author.name)
 
-    # we do not want the bot to reply to itself
-    #elif message.author == client.user:
-    #    return
-
     elif message.content.startswith('?sleep'):
         await asyncio.sleep(5)
         await client.send_message(message.channel, 'Done sleeping')
