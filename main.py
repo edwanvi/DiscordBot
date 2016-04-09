@@ -8,11 +8,13 @@ client = discord.Client()
 username = extrautils.getCreds('creds.txt', 'username')
 password = extrautils.getCreds('creds.txt', 'password')
 
+
 @client.event
 async def on_ready():
     print('Logged in as')
     print(client.user.name)
     print(client.user.id)
+
 
 @client.event
 async def on_message(message):
