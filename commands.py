@@ -12,5 +12,5 @@ password = extrautils.getCreds('creds.txt', 'password')
 
 
 async def send_help(client, message):
-    print("function was called")
+    print("function was called by " + message.author.name)
     await client.send_message(message.channel, "Sorry, you don't have the ability to do that.")
