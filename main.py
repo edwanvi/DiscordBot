@@ -8,13 +8,16 @@ client = discord.Client()
 # Open the file that contains the username and password for the account.
 username = extrautils.getCreds('creds.txt', 'username')
 password = extrautils.getCreds('creds.txt', 'password')
-
+token = extrautils.getCreds('creds.txt', 'token')
+with open("magi093.png", 'rb') as f:
+    profile = f.read()
 
 @client.event
 async def on_ready():
     print('Logged in as')
     print(client.user.name)
     print(client.user.id)
+    await client.edit_profile(avatar=profile)
 
 
 @client.event
@@ -25,7 +28,7 @@ async def on_message(message):
         async for log in client.logs_from(message.channel, limit=100):
             if log.author == message.author:
                 counter += 1
-        await client.edit_message(tmp, 'You have {} messages, '.format(counter) + message.author.name)
+        await client.edit_message(tmp, 'You have {} messages, @'.format(counter) + message.author.name)
 
     elif message.content.startswith('?sleep'):
         await asyncio.sleep(5)
@@ -38,7 +41,6 @@ async def on_message(message):
         await client.send_message(message.channel, "It's not a bug, it's a feature.")
 
     elif message.content == '?cease':
-        await client.send_message(message.channel, 'Authenticating...')
         author = message.author
         authorname = author.id
         if authorname == '164342765394591744':
@@ -64,4 +66,6 @@ async def on_message(message):
         github_name = message.content[8:]
         await commands.github(client, message, github_name)
 
-client.run(username, password)
+# client.run(username, password)
+# Trying the Oauth2 game.
+client.run(token)

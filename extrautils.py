@@ -14,6 +14,8 @@ def getCreds(filename, cred):
         elif line.startswith('p:'):
             password = line[2:]
             password = password.rstrip()
+        elif line.startswith('t:'):
+            token = line[2:]
         else:
             print("Input file not valid. Terminating.")
             exit()
@@ -21,3 +23,5 @@ def getCreds(filename, cred):
         return username
     elif cred == 'password':
         return password
+    elif cred == 'token':
+        return token

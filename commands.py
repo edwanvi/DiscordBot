@@ -33,6 +33,9 @@ async def github(client, message, git_user_name):
     print("Generating Git urls for " + git_user_name)
     git_url = '''https://www.github.com/''' + git_user_name
     git_pages = '''https://{}.github.io'''.format(git_user_name)
-    await client.send_message(message.channel, 'Github User page: ' + git_url)
-    await client.send_message(message.channel, 'Github Pages site: ' + git_pages)
-    await client.send_message(message.channel, 'Note: both of these may 404, especially GitHub Pages.')
+    await client.send_message(message.channel,
+                              'Github User page: ' + git_url
+                              + '\n' +
+                              'Github Pages site: ' + git_pages
+                              + '\n' +
+                              'Note: both of these may 404, especially GitHub Pages.')
