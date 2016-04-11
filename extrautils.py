@@ -16,6 +16,7 @@ def getCreds(filename, cred):
             password = password.rstrip()
         elif line.startswith('t:'):
             token = line[2:]
+            token = token.rstrip()
         else:
             print("Input file not valid. Terminating.")
             exit()
