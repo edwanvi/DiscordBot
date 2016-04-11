@@ -27,14 +27,7 @@ async def send_help(client, message):
 async def hey_buddy(client, message):
     print('hey there ' + message.author.name + '...')
     # i have no regrets.
-    await client.send_message(message.channel, '''hey there buddy chum pal friend buddy pal chum bud friend fella
-    bruther amigo pal buddy friend chummy chum chum pal i don't mean to be rude my friend pal home slice bread slice dawg
-    but i gotta warn ya if u take one more diddly darn step right there im going to have to diddly darn snap ur neck
-    and wowza wouldn't that be a crummy juncture, huh? do you want that?
-    do wish upon yourself to come into physical experience with a crummy juncture?
-    because friend buddy chum friend chum pally pal chum friend if you keep this up well gosh diddly darn
-    i just might have to get not so friendly with u my friendly friend friend pal friend buddy chum pally
-    friend chum buddy...''')
+    await client.send_message(message.channel, '''hey there buddy chum pal friend buddy pal chum bud friend fella bruther amigo pal buddy friend chummy chum chum pal i don't mean to be rude my friend pal home slice bread slice dawg but i gotta warn ya if u take one more diddly darn step right there im going to have to diddly darn snap ur neck and wowza wouldn't that be a crummy juncture, huh? do you want that? do wish upon yourself to come into physical experience with a crummy juncture? because friend buddy chum friend chum pally pal chum friend if you keep this up well gosh diddly darn i just might have to get not so friendly with u my friendly friend friend pal friend buddy chum pally friend chum buddy...''')
 
 async def github(client, message, git_user_name):
     git_url = '''https://www.github.com/''' + git_user_name
