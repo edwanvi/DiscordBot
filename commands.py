@@ -39,3 +39,6 @@ async def github(client, message, git_user_name):
                               'Github Pages site: ' + git_pages
                               + '\n' +
                               'Note: both of these may 404, especially GitHub Pages.')
+
+async def source(client, message):
+    await client.send_message(message.channel, "https://www.github.com/tkdberger/DiscordBot")
