@@ -16,6 +16,7 @@ helptext = " \n".join(
             "`?test`: See how many times the bot has seen you speak\n"
             "`?robot`: BLEEP BLOOP\n"
             "`?echo`: have the robot repeat you\n"
+            "`?github <username>`: create and post the Github URLs for `username`.\n"
             "Debug commands:\n"
             "`?cease`: stop the bot. Can only be executed by @magi093."
         ])
