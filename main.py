@@ -58,7 +58,7 @@ async def on_message(message):
             await client.send_message(message.channel, echo)
 
     # run commands from commands.py
-    elif message.content.startswith("?help"):
+    elif message.content == "?help":
         await commands.send_help(client, message)
     elif message.content.startswith("?heythere"):
         await commands.hey_buddy(client, message)
