@@ -4,6 +4,7 @@ I hope i can get this to work.
 """
 # Import the needed modules.
 import extrautils
+import asyncio
 
 # create a new Client for the bot to run on.
 # Open the file that contains the username and password for the account.
@@ -42,4 +43,8 @@ async def github(client, message, git_user_name):
                               'Note: both of these may 404, especially GitHub Pages.')
 
 async def source(client, message):
-    await client.send_message(message.channel, "https://www.github.com/tkdberger/DiscordBot")
+    requestedSource = message.content[8:]
+    if requestedSource == "":
+        await client.send_message(message.channel, "https://www.github.com/tkdberger/DiscordBot")
+    else:
+        return

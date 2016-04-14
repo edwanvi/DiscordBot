@@ -1,0 +1,15 @@
+{
+  "users":[
+    {
+      "name":"magi-bot",
+      "isBot":"true",
+      "source":"tkdberger/DiscordBot",
+      "token":"IN YOUR DREAMS"
+    },
+    {
+      "name":"R. Danny",
+      "isBot":"true",
+      "source":"Rapptz/RoboDanny"
+    }
+  ]
+}

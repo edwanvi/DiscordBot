@@ -12,6 +12,7 @@ token = extrautils.getCreds('creds.txt', 'token')
 with open("magi093.png", 'rb') as f:
     profile = f.read()
 
+
 @client.event
 async def on_ready():
     print('Logged in as')
