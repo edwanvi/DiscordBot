@@ -1,15 +1,19 @@
 {
-  "users":[
-    {
-      "name":"magi-bot",
-      "isBot":"true",
-      "source":"tkdberger/DiscordBot",
-      "token":"IN YOUR DREAMS"
-    },
-    {
-      "name":"R. Danny",
-      "isBot":"true",
-      "source":"Rapptz/RoboDanny"
-    }
-  ]
+  "magi-bot":{
+    "name":"magi-bot",
+    "isBot":"true",
+    "source":"tkdberger/DiscordBot",
+    "token":"IN YOUR DREAMS",
+    "language":"Python"
+  },
+  "R. Danny":{
+    "name":"R. Danny",
+    "isBot":"true",
+    "source":"Rapptz/RoboDanny"
+  },
+  "magi093":{
+    "name":"magi093",
+    "id":"164342765394591744",
+    "github":"tkdberger"
+  }
 }

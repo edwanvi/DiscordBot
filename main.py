@@ -68,6 +68,8 @@ async def on_message(message):
         await commands.github(client, message, github_name)
     elif message.content.startswith("?source"):
         await commands.source(client, message)
+    elif message.content.startswith("?info"):
+        await commands.getUserInfo(client, message)
 
 # client.run(username, password)
 # Trying the Oauth2 game.

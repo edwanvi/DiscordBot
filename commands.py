@@ -5,11 +5,15 @@ I hope i can get this to work.
 # Import the needed modules.
 import extrautils
 import asyncio
+import json
 
-# create a new Client for the bot to run on.
+# Open data.json for reading.
+data_file = open('data.json')
+data = json.load(data_file)
 # Open the file that contains the username and password for the account.
 username = extrautils.getCreds('creds.txt', 'username')
 password = extrautils.getCreds('creds.txt', 'password')
+
 
 helptext = " \n".join(
         [
@@ -48,3 +52,8 @@ async def source(client, message):
         await client.send_message(message.channel, "https://www.github.com/tkdberger/DiscordBot")
     else:
         return
+async def getUserInfo(client, message):
+    user = message.content[6:]
+    print(data[user])
+    userdata = data[user]
+    await client.send_message(message.channel, userdata)
