@@ -3,7 +3,6 @@
     "name":"magi-bot",
     "isBot":"true",
     "source":"tkdberger/DiscordBot",
-    "token":"IN YOUR DREAMS",
     "language":"Python"
   },
   "R. Danny":{
@@ -13,6 +12,7 @@
   },
   "magi093":{
     "name":"magi093",
+    "isBot":"false",
     "id":"164342765394591744",
     "github":"tkdberger"
   }
