@@ -6,14 +6,14 @@ I hope i can get this to work.
 import extrautils
 import asyncio
 import json
+import discord
 
 # Open data.json for reading.
 data_file = open('data.json')
 data = json.load(data_file)
 # Open the file that contains the username and password for the account.
-username = extrautils.getCreds('creds.txt', 'username')
-password = extrautils.getCreds('creds.txt', 'password')
-
+# username = extrautils.getCreds('creds.txt', 'username')
+# password = extrautils.getCreds('creds.txt', 'password')
 
 helptext = " \n".join(
         [
@@ -22,6 +22,7 @@ helptext = " \n".join(
             "`?robot`: BLEEP BLOOP\n"
             "`?echo`: have the robot repeat you\n"
             "`?github <username>`: create and post the Github URLs for `username`.\n"
+            "`?info <username>`: posts info on discord user `username`. If no such user is on record, the bot adds them.\n"
             "Debug commands:\n"
             "`?cease`: stop the bot. Can only be executed by @magi093."
         ])
@@ -52,8 +53,20 @@ async def source(client, message):
         await client.send_message(message.channel, "https://www.github.com/tkdberger/DiscordBot")
     else:
         return
+
 async def getUserInfo(client, message):
     user = message.content[6:]
-    print(data[user])
-    userdata = data[user]
-    await client.send_message(message.channel, userdata)
+    try:
+        print(data[user])
+        userdata = data[user]
+        await client.send_message(message.channel, userdata)
+    except KeyError:
+        print("Tried to get data on user " + user + " and failed.")
+        await client.send_message(message.channel, "Could not get info on specified user.")
+        try:
+            member = discord.utils.get(message.server.members, name=user)
+            print("found member(s) " + member.name + " that might be them.")
+            print(json.dumps({'name': member.name, 'id': member.id, 'role': member.top_role.name}, sort_keys=True, indent=4))
+        except AttributeError:
+            print("Could not find specified user {}.".format(user))
+            await client.send_message(message.channel, "Could not find specified user {}. Make sure to use thier handle and not thier nickname.".format(user))

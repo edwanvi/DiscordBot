@@ -4,6 +4,7 @@ import extrautils
 import commands
 
 # create a new Client for the bot to run on.
+print("magi-bot v. 1.0 starting up")
 client = discord.Client()
 # Open the file that contains the username and password for the account.
 username = extrautils.getCreds('creds.txt', 'username')
@@ -12,12 +13,10 @@ token = extrautils.getCreds('creds.txt', 'token')
 with open("magi093.png", 'rb') as f:
     profile = f.read()
 
-
 @client.event
 async def on_ready():
-    print('Logged in as')
-    print(client.user.name)
-    print(client.user.id)
+    print('Logged in as ' + client.user.name)
+    print('Id: ' + client.user.id)
     await client.edit_profile(avatar=profile)
 
 @client.event
