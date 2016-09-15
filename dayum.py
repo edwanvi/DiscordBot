@@ -21,6 +21,6 @@ def add_to_json(filename, args):
         feeds = json.load(feedsjson)
 
     with open(filename, mode='w', encoding='utf-8') as feedsjson:
-        entry = {'name': args, 'url': args}
+        entry = {'name': args.name, 'nickname': args.nickname, 'id': args.id}
         feeds.append(entry)
         json.dump(feeds, feedsjson, sort_keys=True, indent=4)
