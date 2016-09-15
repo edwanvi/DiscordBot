@@ -93,3 +93,5 @@ ENV/
 *.xml
 creds.txt
 *.iml
+json_testland.json
+dayum.py

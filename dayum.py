@@ -1,15 +1,26 @@
 # import discord
 import json
-gitxt = ' so https://www.github.com/'
 
-def readTheJson(filename):
-    # read it
-    with open(filename) as data_file:
-        data = json.load(data_file)
-        #print(data) <- just don't
-        print(data["magi-bot"])
+datafile = 'json_testland.json'
 
-sources = {'self': 'tkdberger/DiscordBot', 'rdanny': 'Rapptz/RoboDanny'}
-print(sources['self'] + ' so https://www.github.com/' + sources['self'])
-print(sources['rdanny'] + gitxt + sources['rdanny'])
-readTheJson('data.json')
+class test_user(object):
+    """
+    docstring for test_user.
+    """
+    def __init__(self, name, nickname, userid):
+        super(test_user, self).__init__()
+        self.name = name
+        self.nickname = nickname
+        self.id = userid
+
+with open(datafile, mode='w', encoding='utf-8') as f:
+    json.dump([], f)
+
+def add_to_json(filename, args):
+    with open(filename, mode='r', encoding='utf-8') as feedsjson:
+        feeds = json.load(feedsjson)
+
+    with open(filename, mode='w', encoding='utf-8') as feedsjson:
+        entry = {'name': args, 'url': args}
+        feeds.append(entry)
+        json.dump(feeds, feedsjson, sort_keys=True, indent=4)
