@@ -20,7 +20,6 @@ async def on_ready():
     print(client.user.id)
     await client.edit_profile(avatar=profile)
 
-
 @client.event
 async def on_message(message):
     if message.content.startswith('?test'):
