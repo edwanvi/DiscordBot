@@ -51,7 +51,7 @@ async def on_message(message):
     elif message.content.startswith('?echo'):
         echo = message.content[6:]
         echoverify = message.content[6:12]
-        if echoverify == '?echo ' or echoverify == '?echo':
+        if echoverify == '?echo ' or echoverify == '?echo' or echo == '':
             return
         else:
             await client.send_message(message.channel, echo)

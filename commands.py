@@ -57,17 +57,13 @@ async def source(client, message):
 async def getUserInfo(client, message):
     user = message.content[6:]
     try:
-        print(data[user])
-        userdata = data[user]
-        await client.send_message(message.channel, userdata)
-    except KeyError:
-        print("Tried to get data on user {} and failed. Attempting to get and save data on {}".format(user, user))
-        await client.send_message(message.channel, "Could not get info on specified user.")
-        try:
-            member = discord.utils.get(message.server.members, name=user)
-            print("found member(s) " + member.name + " that might be them.")
-            print(json.dumps({'name': member.name, 'id': member.id, 'role': member.top_role.name}, sort_keys=True, indent=4))
-            json_str = json.dumps({'name': member.name, 'id': member.id, 'role': member.top_role.name}, sort_keys=True, indent=4)
-        except AttributeError:
-            print("Could not find specified user {}.".format(user))
-            await client.send_message(message.channel, "Could not find specified user {}. Make sure to use their handle and not thier nickname.".format(user))
+        member = discord.utils.get(message.server.members, name=user)
+        print(message.author.name + " looked for found member(s) " + member.name)
+        print(json.dumps({'name': member.name, 'id': member.id, 'role': member.top_role.name}, sort_keys=True, indent=4))
+        json_str = json.dumps({'name': member.name, 'id': member.id, 'role': member.top_role.name}, sort_keys=True, indent=4)
+        await client.send_message(message.channel,
+        "```json\n" + json_str + "\n```")
+        extrautils.add_to_json("json_testland.json", member)
+    except AttributeError:
+        print("Could not find specified user {}.".format(user))
+        await client.send_message(message.channel, "Could not find specified user {}. Make sure to use their handle and not thier nickname.".format(user))
