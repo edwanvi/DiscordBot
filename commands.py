@@ -9,7 +9,7 @@ import json
 import discord
 
 # Open data.json for reading.
-data_file = open('data.json')
+data_file = open('json_testland.json')
 data = json.load(data_file)
 # Open the file that contains the username and password for the account.
 # username = extrautils.getCreds('creds.txt', 'username')
@@ -58,12 +58,14 @@ async def getUserInfo(client, message):
     user = message.content[6:]
     try:
         member = discord.utils.get(message.server.members, name=user)
-        print(message.author.name + " looked for found member(s) " + member.name)
-        print(json.dumps({'name': member.name, 'id': member.id, 'role': member.top_role.name}, sort_keys=True, indent=4))
         json_str = json.dumps({'name': member.name, 'id': member.id, 'role': member.top_role.name}, sort_keys=True, indent=4)
-        await client.send_message(message.channel,
-        "```json\n" + json_str + "\n```")
-        extrautils.add_to_json("json_testland.json", member)
+        if next((item for item in data if item["name"] == member.name), None) == None:
+            print(message.author.name + " looked for found member(s) " + member.name)
+            print(json_str)
+            await client.send_message(message.channel, "```json\n" + json_str + "\n```")
+            extrautils.add_to_json("json_testland.json", member)
+        else:
+            await client.send_message(message.channel, "```json\n" + json_str + "\n```")
     except AttributeError:
         print("Could not find specified user {}.".format(user))
         await client.send_message(message.channel, "Could not find specified user {}. Make sure to use their handle and not thier nickname.".format(user))

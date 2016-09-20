@@ -55,6 +55,8 @@ async def on_message(message):
             return
         else:
             await client.send_message(message.channel, echo)
+    elif message.content.startswith('?w'):
+        await client.send_message(message.channel, "wwwwwwwwwwwwwww", tts=True)
 
     # run commands from commands.py
     elif message.content == "?help":
