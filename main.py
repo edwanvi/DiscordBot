@@ -10,6 +10,7 @@ client = discord.Client()
 username = extrautils.getCreds('creds.txt', 'username')
 password = extrautils.getCreds('creds.txt', 'password')
 token = extrautils.getCreds('creds.txt', 'token')
+# read the profile picture into a variable
 with open("magi093.png", 'rb') as f:
     profile = f.read()
 
@@ -17,7 +18,10 @@ with open("magi093.png", 'rb') as f:
 async def on_ready():
     print('Logged in as ' + client.user.name)
     print('Id: ' + client.user.id)
+    # set our profile picture
     await client.edit_profile(avatar=profile)
+    # print out a link to invite the bot to a server
+    print("Invite link: " + discord.utils.oauth_url("168343655264944128"))
 
 @client.event
 async def on_message(message):
