@@ -70,6 +70,14 @@ async def on_message(message):
         await commands.source(client, message)
     elif message.content.startswith("?info"):
         await commands.getUserInfo(client, message)
+    # IDEA: Shorten this somehow. maybe a function that returns true if all this
+    elif message.content.startswith("++voice") or message.content.startswith("++request"):
+        if message.channel.id == "225619147046780930":
+            await client.send_message(message.channel, "Please do not [ACTION:POST] [ABSTRACT:THEMES] [LOCATION:HERE]. [ENTITY:HITLERMOD] does not [ACTION:LIKE] that.")
+            try:
+                await client.delete_message(message)
+            except discord.Forbidden:
+                await client.send_message(message.channel, "Please give the bot the permission to delete messages to use this command.")
 
 # client.run(username, password)
 # Trying the Oauth2 game.
