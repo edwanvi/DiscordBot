@@ -73,6 +73,7 @@ async def on_message(message):
     # IDEA: Shorten this somehow. maybe a function that returns true if all this
     elif message.content.startswith("++voice") or message.content.startswith("++request"):
         if message.channel.id == "225619147046780930":
+            print(message.author.name + " tried to call ++voice or ++request in #general.")
             warnmsg = await client.send_message(message.channel, "Please do not [ACTION:POST] [ABSTRACT:THEMES] [LOCATION:HERE]. [ENTITY:HITLERMOD] does not [ACTION:LIKE] that.")
             try:
                 await client.delete_message(message)
