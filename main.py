@@ -6,14 +6,13 @@ import commands
 # create a new Client for the bot to run on.
 print("magi-bot v. 1.0 starting up")
 client = discord.Client()
-# Open the file that contains the username and password for the account.
-username = extrautils.getCreds('creds.txt', 'username')
-password = extrautils.getCreds('creds.txt', 'password')
+# Open the file that contains the token for the bot.
 token = extrautils.getCreds('creds.txt', 'token')
 # read the profile picture into a variable
 with open("magi093.png", 'rb') as f:
     profile = f.read()
 
+# called when bot becomes ready for use
 @client.event
 async def on_ready():
     print('Logged in as ' + client.user.name)
@@ -74,6 +73,8 @@ async def on_message(message):
         await commands.source(client, message)
     elif message.content.startswith("?info"):
         await commands.getUserInfo(client, message)
+    elif message.content.startswith("?invite"):
+        await commands.invite(client, message)
     # IDEA: Shorten this somehow. maybe a function that returns true if all this
     elif message.content.startswith("++voice") or message.content.startswith("++request"):
         if message.channel.id == "225619147046780930":

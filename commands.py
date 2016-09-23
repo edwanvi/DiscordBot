@@ -11,9 +11,6 @@ import discord
 # Open data.json for reading.
 data_file = open('json_testland.json')
 data = json.load(data_file)
-# Open the file that contains the username and password for the account.
-# username = extrautils.getCreds('creds.txt', 'username')
-# password = extrautils.getCreds('creds.txt', 'password')
 
 helptext = " \n".join(
         [
@@ -69,3 +66,6 @@ async def getUserInfo(client, message):
     except AttributeError:
         print("Could not find specified user {}.".format(user))
         await client.send_message(message.channel, "Could not find specified user {}. Make sure to use their handle and not thier nickname.".format(user))
+
+async def invite(client, message, id="168343655264944128"):
+    await client.send_message(message.channel, "Invite link: " + discord.utils.oauth_url(id))
