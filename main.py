@@ -83,7 +83,7 @@ async def on_message(message):
                 await client.delete_message(message)
             except discord.Forbidden:
                 await client.send_message(message.channel, "Please give the bot the permission to delete messages to use this command.")
-            await asyncio.sleep(5)
+            await asyncio.sleep(2)
             client.delete_message(warnmsg)
 
 client.run(token)
