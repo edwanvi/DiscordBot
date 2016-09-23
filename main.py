@@ -76,14 +76,15 @@ async def on_message(message):
     elif message.content.startswith("?invite"):
         await commands.invite(client, message)
     # IDEA: Shorten this somehow. maybe a function that returns true if all this
-    elif extrautils.check_message_for_wildbot(message):
-        print(message.author.name + " tried to call ++voice or ++request in #general.")
-        warnmsg = await client.send_message(message.channel, "Please do not [ACTION:POST] [ABSTRACT:THEMES] [LOCATION:HERE]. [ENTITY:HITLERMOD] does not [ACTION:LIKE] that.")
-        try:
-            await client.delete_message(message)
-        except discord.Forbidden:
-            await client.send_message(message.channel, "Please give the bot the permission to delete messages to use this command.")
-        await asyncio.sleep(2)
-        client.delete_message(warnmsg)
+    elif message.content.startswith("++voice") or message.content.startswith("++request"):
+        if message.channel.id == "225619147046780930":
+            print(message.author.name + " tried to call ++voice or ++request in #general.")
+            warnmsg = await client.send_message(message.channel, "Please do not [ACTION:POST] [ABSTRACT:THEMES] [LOCATION:HERE]. [ENTITY:HITLERMOD] does not [ACTION:LIKE] that.")
+            try:
+                await client.delete_message(message)
+            except discord.Forbidden:
+                await client.send_message(message.channel, "Please give the bot the permission to delete messages to use this command.")
+            await asyncio.sleep(2)
+            client.delete_message(warnmsg)
 
 client.run(token)
