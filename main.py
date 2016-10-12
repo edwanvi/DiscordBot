@@ -11,6 +11,8 @@ token = extrautils.getCreds('creds.txt', 'token')
 # read the profile picture into a variable
 with open("magi093.png", 'rb') as f:
     profile = f.read()
+# variable to hold channels where ++voice, etc etc is banned
+generalChannels = ["225619147046780930", "225996390587695114", "Herp the derp"]
 
 # called when bot becomes ready for use
 @client.event
@@ -77,8 +79,8 @@ async def on_message(message):
         await commands.invite(client, message)
     # IDEA: Shorten this somehow. maybe a function that returns true if all this
     elif message.content.startswith("++voice") or message.content.startswith("++request"):
-        if message.channel.id == "225619147046780930":
-            print(message.author.name + " tried to call ++voice or ++request in #general.")
+        if message.channel.id in generalChannels:
+            print(message.author.name + " tried to call ++voice or ++request in #" + message.channel.name + ".")
             warnmsg = await client.send_message(message.channel, "Please do not [ACTION:POST] [ABSTRACT:THEMES] [LOCATION:HERE]. [ENTITY:HITLERMOD] does not [ACTION:LIKE] that.")
             try:
                 await client.delete_message(message)
