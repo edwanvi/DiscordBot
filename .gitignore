@@ -92,6 +92,7 @@ ENV/
 # Created by .ignore support plugin (hsz.mobi)
 .idea/workspace.xml
 *.xml
+# other misc things
 creds.txt
 *.iml
 json_testland.json
