@@ -7,7 +7,10 @@ Yeah.
 generalChannels = ["225619147046780930"]
 
 def getCreds(filename, cred):
-    """Open the file that contains the username and password for the account."""
+    """
+    Open the file that contains the username and password for the account and return the specified credential.
+    works remarkably well for a piece of code I wrote.
+    """
     datafile = open(filename)
     for line in datafile:
         if line.startswith('u:'):
