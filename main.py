@@ -31,14 +31,11 @@ async def on_message(message):
             if log.author == message.author:
                 counter += 1
         await client.edit_message(tmp, 'You have {} messages, @'.format(counter) + message.author.name)
-
     elif message.content.startswith('?sleep'):
         await asyncio.sleep(5)
         await client.send_message(message.channel, 'Done sleeping')
-
     elif message.content.startswith('?robot'):
         await client.send_message(message.channel, 'BLEEP BLOOP')
-
     elif message.content.startswith('?bug'):
         await client.send_message(message.channel, "It's not a bug, it's a feature.")
 
@@ -60,6 +57,8 @@ async def on_message(message):
             await client.send_message(message.channel, echo)
     elif message.content.startswith('?w'):
         await client.send_message(message.channel, "wwwwwwwwwwwwwww", tts=True)
+    elif message.content.startswith('?dramatic'):
+        await client.send_message(message.channel, "dun\ndun\nduuuuuuuuuuun", tts=True)
 
     # run commands from commands.py
     elif message.content == "?help":
