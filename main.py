@@ -51,6 +51,7 @@ async def on_message(message):
     elif message.content.startswith('?echo'):
         echo = message.content[6:]
         echoverify = message.content[6:12]
+        # YES THE SPACE IS NECESARY
         if echoverify == '?echo ' or echoverify == '?echo' or echo == '':
             pass
         else:
