@@ -45,8 +45,3 @@ def add_to_json(filename, args):
         entry = {'name': args.name, 'id': args.id, 'role': args.top_role.name}
         feeds.append(entry)
         json.dump(feeds, feedsjson, sort_keys=True, indent=4)
-
-def check_message_for_wildbot(message):
-    if message.content.startswith("++voice") or message.content.startswith("++request"):
-        if message.channel in generalChannels:
-            return True
