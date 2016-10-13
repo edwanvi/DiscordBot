@@ -15,7 +15,7 @@ data = json.load(data_file)
 helptext = " \n".join(
         [
             "`?help`: this text\n"
-            "`?test`: See how many times the bot has seen you speak\n"
+            "`?messagecount`: See how many times the bot has seen you speak\n"
             "`?robot`: BLEEP BLOOP\n"
             "`?echo`: have the robot repeat you\n"
             "`?github <username>`: create and post the Github URLs for `username`.\n"
