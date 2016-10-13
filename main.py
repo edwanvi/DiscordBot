@@ -2,6 +2,7 @@ import discord
 import asyncio
 import extrautils
 import commands
+from commands import check_message_for_wildbot
 
 # create a new Client for the bot to run on.
 print("magi-bot v. 0.1 starting up")
@@ -84,17 +85,17 @@ async def on_message(message):
             await commands.invite(client, message)
         else:
             await commands.invite(client, message, invite_id)
-    # IDEA: Shorten this somehow. maybe a function that returns true if all this
-    wildbot = commands.check_message_for_wildbot(message)
-    elif commands.check_message_for_wildbot(message) or message.content.startswith("++voice") or message.content.startswith("++request"):
-        if message.channel.id in generalChannels:
-            print(message.author.name + " tried to call ++voice or ++request in #" + message.channel.name + ".")
-            warnmsg = await client.send_message(message.channel, "Please do not [ACTION:POST] [ABSTRACT:THEMES] [LOCATION:HERE]. [ENTITY:HITLERMOD] does not [ACTION:LIKE] that.")
-            try:
-                await client.delete_message(message)
-            except discord.Forbidden:
-                await client.send_message(message.channel, "Please give the bot the permission to delete messages to use this command.")
-            await asyncio.sleep(5)
-            await client.delete_message(warnmsg)
+    # IDEA: Shorten this somehow. maybe a function that returns true if all this wildbot = commands.check_message_for_wildbot(message)
+    elif commands.check_message_for_wildbot(message):
+        print("Message is a wildbot command")
+        # if message.channel.id in generalChannels:
+        print(message.author.name + " tried to call ++voice or ++request in #" + message.channel.name + ".")
+        warnmsg = await client.send_message(message.channel, "Please do not [ACTION:POST] [ABSTRACT:THEMES] [LOCATION:HERE]. [ENTITY:HITLERMOD] does not [ACTION:LIKE] that.")
+        try:
+            await client.delete_message(message)
+        except discord.Forbidden:
+            await client.send_message(message.channel, "Please give the bot the permission to delete messages to use this command.")
+        await asyncio.sleep(5)
+        await client.delete_message(warnmsg)
 
 client.run(token)

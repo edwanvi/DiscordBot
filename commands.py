@@ -12,7 +12,7 @@ import discord
 data_file = open('json_testland.json')
 data = json.load(data_file)
 # variable to hold channels where ++voice, etc etc is banned
-generalChannels = ["225619147046780930", "225996390587695114", "Herp the derp"]
+generalChannels = ["225619147046780930", "225996390587695114"]
 
 
 helptext = " \n".join(
@@ -77,7 +77,7 @@ async def invite(client, message, id="168343655264944128"):
 
 def check_message_for_wildbot(message):
     if message.content.startswith("++voice") or message.content.startswith("++request"):
-        if message.channel in generalChannels:
+        if message.channel.id in generalChannels:
             print("Message returned TRUE for wildbot commands in a general channel")
             return True
         else:
