@@ -4,7 +4,7 @@ import extrautils
 import commands
 
 # create a new Client for the bot to run on.
-print("magi-bot v. 1.0 starting up")
+print("magi-bot v. 0.1 starting up")
 client = discord.Client()
 # Open the file that contains the token for the bot.
 token = extrautils.getCreds('creds.txt', 'token')
