@@ -33,14 +33,16 @@ async def on_message(message):
             if log.author == message.author:
                 counter += 1
         await client.edit_message(tmp, 'You have {} messages, @'.format(counter) + message.author.name)
+    # do nothing for 5 seconds. somehow the bot still runs commands whilst waiting
     elif message.content.startswith('?sleep'):
         await asyncio.sleep(5)
         await client.send_message(message.channel, 'Done sleeping')
+    # joke commands
     elif message.content.startswith('?robot'):
         await client.send_message(message.channel, 'BLEEP BLOOP')
     elif message.content.startswith('?bug'):
         await client.send_message(message.channel, "It's not a bug, it's a feature.")
-
+    # Stop the bot
     elif message.content == '?cease':
         author = message.author
         authorname = author.id
@@ -49,7 +51,7 @@ async def on_message(message):
             await client.logout()
         else:
             await client.send_message(message.channel, "Sorry, you don't have the ability to do that.")
-
+    # repeat after the user
     elif message.content.startswith('?echo'):
         echo = message.content[6:]
         echoverify = message.content[6:12]
@@ -58,6 +60,7 @@ async def on_message(message):
             pass
         else:
             await client.send_message(message.channel, echo)
+    # tts sh*tposting
     elif message.content.startswith('?w'):
         await client.send_message(message.channel, "wwwwwwwwwwwwwww", tts=True)
     elif message.content.startswith('?dramatic'):
@@ -76,7 +79,11 @@ async def on_message(message):
     elif message.content.startswith("?info"):
         await commands.getUserInfo(client, message)
     elif message.content.startswith("?invite"):
-        await commands.invite(client, message)
+        invite_id = message.content[8:]
+        if invite_id == "":
+            await commands.invite(client, message)
+        else:
+            await commands.invite(client, message, invite_id)
     # IDEA: Shorten this somehow. maybe a function that returns true if all this
     elif message.content.startswith("++voice") or message.content.startswith("++request"):
         if message.channel.id in generalChannels:
