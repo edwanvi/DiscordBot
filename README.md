@@ -1,5 +1,5 @@
 # DiscordBot
-A simple stupid discord bot
+A simple stupid discord bot.
 
 ---
 This repository uses Gitflow.
