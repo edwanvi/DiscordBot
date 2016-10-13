@@ -62,7 +62,7 @@ async def on_message(message):
         else:
             await client.send_message(message.channel, echo)
     # tts sh*tposting
-    elif message.content.startswith('?w'):
+    elif message.content =='?w':
         await client.send_message(message.channel, "wwwwwwwwwwwwwww", tts=True)
     elif message.content.startswith('?dramatic'):
         await client.send_message(message.channel, "dun\ndun\nduuuuuuuuuuun", tts=True)
