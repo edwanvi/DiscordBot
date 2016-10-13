@@ -78,7 +78,6 @@ async def invite(client, message, id="168343655264944128"):
 def check_message_for_wildbot(message):
     if message.content.startswith("++voice") or message.content.startswith("++request"):
         if message.channel.id in generalChannels:
-            print("Message returned TRUE for wildbot commands in a general channel")
             return True
         else:
             return False
