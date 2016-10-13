@@ -32,7 +32,7 @@ helptext = " \n".join(
 
 async def send_help(client, message):
     print("help was called by " + message.author.name)
-    await client.send_message(message.channel, "Oh did you want some help? \n" + helptext)
+    await client.send_message(message.channel, helptext)
 
 async def hey_buddy(client, message):
     print('hey there ' + message.author.name + '...')
