@@ -20,6 +20,8 @@ helptext = " \n".join(
             "`?echo`: have the robot repeat you\n"
             "`?github <username>`: create and post the Github URLs for `username`.\n"
             "`?info <username>`: posts info on discord user `username`. If no such user is on record, the bot adds them.\n"
+            "`?source`: Gets the bots source as it stands on Github.\n"
+            "`?invite`: Prints the link to invite the bot to a server.\n"
             "Debug commands:\n"
             "`?cease`: stop the bot. Can only be executed by @magi093."
         ])
