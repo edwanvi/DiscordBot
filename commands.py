@@ -12,7 +12,7 @@ import discord
 data_file = open('json_testland.json')
 data = json.load(data_file)
 # variable to hold channels where ++voice, etc etc is banned
-generalChannels = ["225619147046780930", "225996390587695114", "81384788765712384"]
+generalChannels = ["225619147046780930", "225996390587695114", "81402706320699392"]
 
 
 helptext = " \n".join(

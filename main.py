@@ -92,7 +92,7 @@ async def on_message(message):
         warnmsg = await client.send_message(message.channel, "Please do not [ACTION:POST] [ABSTRACT:THEMES] [LOCATION:HERE]. [ENTITY:HITLERMOD] does not [ACTION:LIKE] that.")
         try:
             await client.delete_message(message)
-        except discord.Forbidden:
+        except discord.errors.Forbidden:
             await client.send_message(message.channel, "Please give the bot the permission to delete messages to use this command.")
         await asyncio.sleep(5)
         await client.delete_message(warnmsg)
