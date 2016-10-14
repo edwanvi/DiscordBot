@@ -62,7 +62,7 @@ async def on_message(message):
         else:
             await client.send_message(message.channel, echo)
     # tts sh*tposting
-    elif message.content.startswith('?w'):
+    elif message.content =='?w':
         await client.send_message(message.channel, "wwwwwwwwwwwwwww", tts=True)
     elif message.content.startswith('?dramatic'):
         await client.send_message(message.channel, "dun\ndun\nduuuuuuuuuuun", tts=True)
@@ -87,7 +87,6 @@ async def on_message(message):
             await commands.invite(client, message, invite_id)
     # IDEA: Shorten this somehow. maybe a function that returns true if all this wildbot = commands.check_message_for_wildbot(message)
     elif commands.check_message_for_wildbot(message):
-        # if message.channel.id in generalChannels:
         print(message.author.name + " tried to call ++voice or ++request in #" + message.channel.name + ".")
         warnmsg = await client.send_message(message.channel, "Please do not [ACTION:POST] [ABSTRACT:THEMES] [LOCATION:HERE]. [ENTITY:HITLERMOD] does not [ACTION:LIKE] that.")
         try:
