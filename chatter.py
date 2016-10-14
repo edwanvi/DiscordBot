@@ -1,35 +1,28 @@
+# import chatterbot modules
 from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer
-import logging
-
-
-# Uncomment the following line to enable verbose logging
-# logging.basicConfig(level=logging.INFO)
-
-# Create a new instance of a ChatBot
-bot = ChatBot("Terminal",
+# Create the bot, may CandyToast live on
+bot = ChatBot("CandyToast",
     storage_adapter="chatterbot.adapters.storage.JsonFileStorageAdapter",
     logic_adapters=[
         "chatterbot.adapters.logic.MathematicalEvaluation",
         "chatterbot.adapters.logic.TimeLogicAdapter",
         "chatterbot.adapters.logic.ClosestMatchAdapter"
     ],
-    input_adapter="chatterbot.adapters.input.TerminalAdapter",
+    input_adapter="chatterbot.adapters.input.VariableInputTypeAdapter",
     output_adapter="chatterbot.adapters.output.TerminalAdapter",
-    database="./database.db"
+    database="./database.json"
 )
+# TIIIIINY amount of training on english corpus
 bot.set_trainer(ChatterBotCorpusTrainer)
 bot.train("chatterbot.corpus.english")
 
-print("Type something to begin...")
+print("Bot CandyToast is now ready for use.")
 
-# The following loop will execute each time the user enters input
-while True:
+def talk_to_the_dead(message):
     try:
-        # We pass None to this method because the parameter
-        # is not used by the TerminalAdapter
-        bot_input = bot.get_response(None)
+        bot_input = bot.get_response(message)
         return bot_input
     # Press ctrl-c or ctrl-d on the keyboard to exit
     except (KeyboardInterrupt, EOFError, SystemExit):
-        break
+        pass

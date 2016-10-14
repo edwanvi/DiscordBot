@@ -1,11 +1,16 @@
+print("Importing discord")
 import discord
+print("Importing asyncio")
 import asyncio
+print("Importing utils")
 import extrautils
+print("Importing commands")
 import commands
-from commands import check_message_for_wildbot
+print("Importing chatterbot. Note that this tends to spam errors into the conosle, work is being done to prevent this.")
+import chatter
 
 # create a new Client for the bot to run on.
-print("magi-bot v. 0.1 starting up")
+print("magi-bot v0.1 starting up")
 client = discord.Client()
 # Open the file that contains the token for the bot.
 token = extrautils.getCreds('creds.txt', 'token')
@@ -27,6 +32,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    mention = message.server.me.mention if message.server else bot.user.mention
     if message.content.startswith('?messagecount'):
         counter = 0
         tmp = await client.send_message(message.channel, 'Calculating messages...')
@@ -95,5 +101,10 @@ async def on_message(message):
             await client.send_message(message.channel, "Please give the bot the permission to delete messages to use this command.")
         await asyncio.sleep(5)
         await client.delete_message(warnmsg)
+
+    # ChatBot!
+    elif message.content.startswith(mention):
+        candy_speaks = chatter.talk_to_the_dead(message.content[len(mention):])
+        await client.send_message(message.channel, candy_speaks)
 
 client.run(token)
