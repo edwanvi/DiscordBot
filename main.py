@@ -111,7 +111,13 @@ async def on_message(message):
 
     # ChatBot!
     elif message.content.startswith(mention):
-        candy_speaks = chatter.talk_to_the_dead(message.content[len(mention):])
-        await client.send_message(message.channel, candy_speaks)
+        if message.server.id == "225619147046780930":
+            candy_speaks = chatter.talk_to_the_dead(message.content[len(mention) + 1:])
+            await client.send_message(message.channel, candy_speaks)
+        elif message.server.id == "81384788765712384":
+            mr_wumpus = chatter.may_i_speak_to_the_wumpus(message.content[len(mention) + 1:])
+            await client.send_message(message.channel, mr_wumpus)
+        else:
+            pass
 
 client.run(token)
