@@ -16,7 +16,7 @@ bot = ChatBot("Terminal",
     ],
     input_adapter="chatterbot.adapters.input.TerminalAdapter",
     output_adapter="chatterbot.adapters.output.TerminalAdapter",
-    database="../database.db"
+    database="./database.db"
 )
 bot.set_trainer(ChatterBotCorpusTrainer)
 bot.train(
