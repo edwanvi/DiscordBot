@@ -70,8 +70,10 @@ async def on_message(message):
         # YES THE SPACE IS NECESARY
         if echoverify == '?echo ' or echoverify == '?echo' or echo == '':
             pass
-        else:
+        elif message.author.id != '225804714141286401':
             await client.send_message(message.channel, echo)
+        else:
+            pass
     # tts sh*tposting
     elif message.content =='?w':
         await client.send_message(message.channel, "wwwwwwwwwwwwwww", tts=True)
