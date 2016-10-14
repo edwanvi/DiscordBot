@@ -11,11 +11,15 @@ import discord
 # Open data.json for reading.
 data_file = open('json_testland.json')
 data = json.load(data_file)
+# variable to hold channels where ++voice, etc etc is banned
+generalChannels = ["225619147046780930", "225996390587695114", "81402706320699392"]
+# open buddy.txt for reading
+buddy = open('buddy.txt')
 
 helptext = " \n".join(
         [
             "`?help`: this text\n"
-            "`?test`: See how many times the bot has seen you speak\n"
+            "`?messagecount`: See how many times the bot has seen you speak\n"
             "`?robot`: BLEEP BLOOP\n"
             "`?echo`: have the robot repeat you\n"
             "`?github <username>`: create and post the Github URLs for `username`.\n"
@@ -28,12 +32,12 @@ helptext = " \n".join(
 
 async def send_help(client, message):
     print("help was called by " + message.author.name)
-    await client.send_message(message.channel, "Oh did you want some help? \n" + helptext)
+    await client.send_message(message.channel, helptext)
 
 async def hey_buddy(client, message):
     print('hey there ' + message.author.name + '...')
     # i have no regrets.
-    await client.send_message(message.channel, '''hey there buddy chum pal friend buddy pal chum bud friend fella bruther amigo pal buddy friend chummy chum chum pal i don't mean to be rude my friend pal home slice bread slice dawg but i gotta warn ya if u take one more diddly darn step right there im going to have to diddly darn snap ur neck and wowza wouldn't that be a crummy juncture, huh? do you want that? do wish upon yourself to come into physical experience with a crummy juncture? because friend buddy chum friend chum pally pal chum friend if you keep this up well gosh diddly darn i just might have to get not so friendly with u my friendly friend friend pal friend buddy chum pally friend chum buddy...''')
+    await client.send_message(message.channel, buddy.read())
 
 async def github(client, message, git_user_name):
     print("Generating Git urls for " + git_user_name)
@@ -71,3 +75,12 @@ async def getUserInfo(client, message):
 
 async def invite(client, message, id="168343655264944128"):
     await client.send_message(message.channel, "Invite link: " + discord.utils.oauth_url(id))
+
+def check_message_for_wildbot(message):
+    if message.content.startswith("++voice") or message.content.startswith("++request"):
+        if message.channel.id in generalChannels:
+            return True
+        else:
+            return False
+    else:
+        return False

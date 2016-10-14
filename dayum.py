@@ -1,26 +1,35 @@
-# import discord
-import json
+from chatterbot import ChatBot
+from chatterbot.trainers import ChatterBotCorpusTrainer
+import logging
 
-datafile = 'json_testland.json'
 
-class test_user(object):
-    """
-    docstring for test_user.
-    """
-    def __init__(self, name, nickname, userid):
-        super(test_user, self).__init__()
-        self.name = name
-        self.nickname = nickname
-        self.id = userid
+# Uncomment the following line to enable verbose logging
+# logging.basicConfig(level=logging.INFO)
 
-with open(datafile, mode='w', encoding='utf-8') as f:
-    json.dump([], f)
+# Create a new instance of a ChatBot
+bot = ChatBot("Terminal",
+    storage_adapter="chatterbot.adapters.storage.JsonFileStorageAdapter",
+    logic_adapters=[
+        "chatterbot.adapters.logic.MathematicalEvaluation",
+        "chatterbot.adapters.logic.TimeLogicAdapter",
+        "chatterbot.adapters.logic.ClosestMatchAdapter"
+    ],
+    input_adapter="chatterbot.adapters.input.TerminalAdapter",
+    output_adapter="chatterbot.adapters.output.TerminalAdapter",
+    database="./database.db"
+)
+bot.set_trainer(ChatterBotCorpusTrainer)
+bot.train("chatterbot.corpus.english")
 
-def add_to_json(filename, args):
-    with open(filename, mode='r', encoding='utf-8') as feedsjson:
-        feeds = json.load(feedsjson)
+print("Type something to begin...")
 
-    with open(filename, mode='w', encoding='utf-8') as feedsjson:
-        entry = {'name': args.name, 'nickname': args.nickname, 'id': args.id}
-        feeds.append(entry)
-        json.dump(feeds, feedsjson, sort_keys=True, indent=4)
+# The following loop will execute each time the user enters input
+while True:
+    try:
+        # We pass None to this method because the parameter
+        # is not used by the TerminalAdapter
+        bot_input = bot.get_response(None)
+        return bot_input
+    # Press ctrl-c or ctrl-d on the keyboard to exit
+    except (KeyboardInterrupt, EOFError, SystemExit):
+        break
