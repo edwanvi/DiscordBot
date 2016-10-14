@@ -57,9 +57,6 @@ async def on_message(message):
         authorname = author.id
         if authorname == '164342765394591744':
             await client.send_message(message.channel, 'Ceasing.')
-            print("Adding and committing database.json")
-            call("git add database.json")
-            call('''git commit -m "AUTOMATED COMMIT OF database.json"''')
             await client.logout()
         else:
             await client.send_message(message.channel, "Sorry, you don't have the ability to do that.")
