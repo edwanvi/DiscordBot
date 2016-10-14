@@ -29,7 +29,7 @@ while True:
         # We pass None to this method because the parameter
         # is not used by the TerminalAdapter
         bot_input = bot.get_response(None)
-
+        return bot_input
     # Press ctrl-c or ctrl-d on the keyboard to exit
     except (KeyboardInterrupt, EOFError, SystemExit):
         break
