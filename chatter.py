@@ -6,7 +6,7 @@ bot = ChatBot("CandyToast",
     storage_adapter="chatterbot.adapters.storage.JsonFileStorageAdapter",
     logic_adapters=[
         "chatterbot.adapters.logic.MathematicalEvaluation",
-        "chatterbot.adapters.logic.TimeLogicAdapter",
+        # "chatterbot.adapters.logic.TimeLogicAdapter",
         "chatterbot.adapters.logic.ClosestMatchAdapter"
     ],
     input_adapter="chatterbot.adapters.input.VariableInputTypeAdapter",
