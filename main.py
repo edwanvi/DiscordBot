@@ -6,6 +6,8 @@ print("Importing utils")
 import extrautils
 print("Importing commands")
 import commands
+print("Importing call from subprocess")
+from subprocess import call
 print("Importing chatterbot. Note that this tends to spam errors into the conosle, work is being done to prevent this.")
 import chatter
 
@@ -65,8 +67,10 @@ async def on_message(message):
         # YES THE SPACE IS NECESARY
         if echoverify == '?echo ' or echoverify == '?echo' or echo == '':
             pass
-        else:
+        elif message.author.id != '225804714141286401':
             await client.send_message(message.channel, echo)
+        else:
+            pass
     # tts sh*tposting
     elif message.content =='?w':
         await client.send_message(message.channel, "wwwwwwwwwwwwwww", tts=True)
@@ -104,7 +108,13 @@ async def on_message(message):
 
     # ChatBot!
     elif message.content.startswith(mention):
-        candy_speaks = chatter.talk_to_the_dead(message.content[len(mention):])
-        await client.send_message(message.channel, candy_speaks)
+        if message.server.id == "225619147046780930":
+            candy_speaks = chatter.talk_to_the_dead(message.content[len(mention) + 1:])
+            await client.send_message(message.channel, candy_speaks)
+        elif message.server.id == "81384788765712384":
+            mr_wumpus = chatter.may_i_speak_to_the_wumpus(message.content[len(mention) + 1:])
+            await client.send_message(message.channel, mr_wumpus)
+        else:
+            pass
 
 client.run(token)

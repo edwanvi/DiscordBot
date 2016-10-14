@@ -96,5 +96,5 @@ database.json
 
 # other misc things
 creds.txt
-json_testland.json
+*.json
 dayum.py
