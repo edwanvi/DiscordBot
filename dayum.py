@@ -19,9 +19,7 @@ bot = ChatBot("Terminal",
     database="./database.db"
 )
 bot.set_trainer(ChatterBotCorpusTrainer)
-bot.train(
-    "chatterbot.corpus.english"
-)
+bot.train("chatterbot.corpus.english")
 
 print("Type something to begin...")
 
