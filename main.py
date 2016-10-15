@@ -19,8 +19,6 @@ token = extrautils.getCreds('creds.txt', 'token')
 # read the profile picture into a variable
 with open("magi093.png", 'rb') as f:
     profile = f.read()
-# variable to hold channels where ++voice, etc etc is banned
-generalChannels = ["225619147046780930", "225996390587695114", "Herp the derp"]
 
 # called when bot becomes ready for use
 @client.event
