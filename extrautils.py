@@ -12,14 +12,15 @@ def getCreds(filename, cred):
     works remarkably well for a piece of code I wrote.
     """
     datafile = open(filename)
+    username, password, token = (None, None, None)
     for line in datafile:
-        if line.startswith('u:'):
+        if line.startswith('u:') and username == None:
             username = line[2:]
             username = username.rstrip()
-        elif line.startswith('p:'):
+        elif line.startswith('p:') and password == None:
             password = line[2:]
             password = password.rstrip()
-        elif line.startswith('t:'):
+        elif line.startswith('t:') and password == None:
             token = line[2:]
             token = token.rstrip()
         else:
