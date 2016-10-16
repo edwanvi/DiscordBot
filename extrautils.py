@@ -11,6 +11,7 @@ def getCreds(filename, cred):
     Open the file that contains the username and password for the account and return the specified credential.
     works remarkably well for a piece of code I wrote.
     """
+    username, password, token = (None, None, None)
     datafile = open(filename)
     username = None
     password = None
@@ -27,7 +28,7 @@ def getCreds(filename, cred):
             token = token.rstrip()
         else:
             print("Input file not valid. Terminating.")
-            exit()
+            pass
     if cred == 'username':
         return username
     elif cred == 'password':

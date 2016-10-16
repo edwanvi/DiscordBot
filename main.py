@@ -113,6 +113,6 @@ async def on_message(message):
             mr_wumpus = chatter.may_i_speak_to_the_wumpus(message.content[len(mention) + 1:])
             await client.send_message(message.channel, mr_wumpus)
         else:
-            pass
+            await client.send_message(message.channel, "Your server doesn't have a chatterbot configured for it yet!\nGo pester @tkdberger on GitHub to get this fixed!")
 
 client.run(token)
