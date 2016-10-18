@@ -106,7 +106,7 @@ async def on_message(message):
 
     # ChatBot!
     elif message.content.startswith(mention):
-        if message.server.id == "225619147046780930":
+        if message.server.id == "225619147046780930" and message.author.id != "225804714141286401":
             await client.send_typing(message.channel)
             candy_speaks = chatter.talk_to_the_dead(message.content[len(mention) + 1:])
             await client.send_message(message.channel, candy_speaks)
@@ -114,6 +114,8 @@ async def on_message(message):
             await client.send_typing(message.channel)
             mr_wumpus = chatter.may_i_speak_to_the_wumpus(message.content[len(mention) + 1:])
             await client.send_message(message.channel, mr_wumpus)
+        elif message.author.id == "225804714141286401":
+            pass
         else:
             await client.send_message(message.channel, "Your server doesn't have a chatterbot configured for it yet!\nGo pester @tkdberger on GitHub to get this fixed!")
 
