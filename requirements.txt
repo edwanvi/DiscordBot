@@ -1,2 +1,2 @@
 discord.py == 0.13.0
-chatterbot >= 
+chatterbot >= 0.4.10
