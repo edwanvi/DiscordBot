@@ -15,7 +15,8 @@ candybot = ChatBot("CandyToast",
     ],
     input_adapter="chatterbot.adapters.input.VariableInputTypeAdapter",
     # output_adapter="chatterbot.adapters.output.TerminalAdapter",
-    database="./candy_toast.json"
+    database="./candy_toast.json",
+    silence_performance_warning=True
 )
 bots.append(candybot)
 print("Bot CandyToast is now ready for use.")
@@ -29,7 +30,8 @@ api_memer = ChatBot("Wumpus",
     ],
     input_adapter="chatterbot.adapters.input.VariableInputTypeAdapter",
     # output_adapter="chatterbot.adapters.output.TerminalAdapter",
-    database="./ratelimit.json"
+    database="./ratelimit.json",
+    silence_performance_warning=True
 )
 bots.append(api_memer)
 print("Bot Wumpus is now ready for use.")

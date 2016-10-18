@@ -19,8 +19,6 @@ token = extrautils.getCreds('creds.txt', 'token')
 # read the profile picture into a variable
 with open("magi093.png", 'rb') as f:
     profile = f.read()
-# variable to hold channels where ++voice, etc etc is banned
-generalChannels = ["225619147046780930", "225996390587695114", "Herp the derp"]
 
 # called when bot becomes ready for use
 @client.event
@@ -109,12 +107,14 @@ async def on_message(message):
     # ChatBot!
     elif message.content.startswith(mention):
         if message.server.id == "225619147046780930":
+            await client.send_typing(message.channel)
             candy_speaks = chatter.talk_to_the_dead(message.content[len(mention) + 1:])
             await client.send_message(message.channel, candy_speaks)
         elif message.server.id == "81384788765712384":
+            await client.send_typing(message.channel)
             mr_wumpus = chatter.may_i_speak_to_the_wumpus(message.content[len(mention) + 1:])
             await client.send_message(message.channel, mr_wumpus)
         else:
-            pass
+            await client.send_message(message.channel, "Your server doesn't have a chatterbot configured for it yet!\nGo pester @tkdberger on GitHub to get this fixed!")
 
 client.run(token)
