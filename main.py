@@ -107,8 +107,14 @@ async def on_message(message):
     # ChatBot!
     elif message.content.startswith(mention):
         message_minus_mention = message.content[len(mention)+1:]
-        if message_minus_mention.startswith("say hello to ") or message_minus_mention.startswith("Say hello to "):
-            await client.send_message(message.channel, "hello " + message_minus_mention[13:])
+        if message_minus_mention == "say hello" or message_minus_mention == "Say hello":
+            await client.send_message(message.channel, "Hello!")
+        elif message_minus_mention == "say goodbye" or message_minus_mention == "Say goodbye":
+            await client.send_message(message.channel, "Farewell!")
+        elif message_minus_mention.startswith("say hello to ") or message_minus_mention.startswith("Say hello to "):
+            await client.send_message(message.channel, "Hello " + message_minus_mention[13:])
+        elif message_minus_mention.startswith("say goodbye to ") or message_minus_mention.startswith("Say goodbye to "):
+            await client.send_message(message.channel, "Goodbye " + message_minus_mention[15:])
         else:
             if message.server.id == "225619147046780930" and message.author.id != "225804714141286401":
                 await client.send_typing(message.channel)
