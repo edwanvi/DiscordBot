@@ -8,7 +8,7 @@ print("Importing commands")
 import commands
 print("Importing call from subprocess")
 from subprocess import call
-print("Importing chatterbot. Note that this tends to spam errors into the conosle, work is being done to prevent this.")
+print("Importing chatterbot")
 import chatter
 
 # create a new Client for the bot to run on.
@@ -106,17 +106,21 @@ async def on_message(message):
 
     # ChatBot!
     elif message.content.startswith(mention):
-        if message.server.id == "225619147046780930" and message.author.id != "225804714141286401":
-            await client.send_typing(message.channel)
-            candy_speaks = chatter.talk_to_the_dead(message.content[len(mention) + 1:])
-            await client.send_message(message.channel, candy_speaks)
-        elif message.server.id == "81384788765712384":
-            await client.send_typing(message.channel)
-            mr_wumpus = chatter.may_i_speak_to_the_wumpus(message.content[len(mention) + 1:])
-            await client.send_message(message.channel, mr_wumpus)
-        elif message.author.id == "225804714141286401":
-            pass
+        message_minus_mention = message.content[len(mention)+1:]
+        if message_minus_mention.startswith("say hello to ") or message_minus_mention.startswith("Say hello to "):
+            await client.send_message(message.channel, "hello " + message_minus_mention[13:])
         else:
-            await client.send_message(message.channel, "Your server doesn't have a chatterbot configured for it yet!\nGo pester @tkdberger on GitHub to get this fixed!")
+            if message.server.id == "225619147046780930" and message.author.id != "225804714141286401":
+                await client.send_typing(message.channel)
+                candy_speaks = chatter.talk_to_the_dead(message.content[len(mention) + 1:])
+                await client.send_message(message.channel, candy_speaks)
+            elif message.server.id == "81384788765712384":
+                await client.send_typing(message.channel)
+                mr_wumpus = chatter.may_i_speak_to_the_wumpus(message.content[len(mention) + 1:])
+                await client.send_message(message.channel, mr_wumpus)
+            elif message.author.id == "225804714141286401":
+                pass
+            else:
+                await client.send_message(message.channel, "Your server doesn't have a chatterbot configured for it yet!\nGo pester @tkdberger on GitHub to get this fixed!")
 
 client.run(token)
