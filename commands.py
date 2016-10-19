@@ -1,6 +1,6 @@
 """
 The commands that aren't in main.py.
-I hope i can get this to work.
+I hope I can get this to work.
 """
 # Import the needed modules.
 import extrautils
@@ -78,6 +78,15 @@ async def invite(client, message, id="168343655264944128"):
 
 def check_message_for_wildbot(message):
     if message.content.startswith("++voice") or message.content.startswith("++request"):
+        if message.channel.id in generalChannels:
+            return True
+        else:
+            return False
+    else:
+        return False
+
+def check_message_for_aethex(message):
+    if message.content.startswith("-play"):
         if message.channel.id in generalChannels:
             return True
         else:
