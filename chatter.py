@@ -16,7 +16,8 @@ candybot = ChatBot("CandyToast",
     input_adapter="chatterbot.adapters.input.VariableInputTypeAdapter",
     # output_adapter="chatterbot.adapters.output.TerminalAdapter",
     database="./candy_toast.json",
-    silence_performance_warning=True
+    silence_performance_warning=True,
+    filters="chatterbot.filters.RepetitiveResponseFilter"
 )
 bots.append(candybot)
 # Discord API server bot
@@ -30,7 +31,8 @@ api_memer = ChatBot("Wumpus",
     input_adapter="chatterbot.adapters.input.VariableInputTypeAdapter",
     # output_adapter="chatterbot.adapters.output.TerminalAdapter",
     database="./ratelimit.json",
-    silence_performance_warning=True
+    silence_performance_warning=True,
+    filters="chatterbot.filters.RepetitiveResponseFilter"
 )
 bots.append(api_memer)
 # TIIIIINY amount of training on english corpus
