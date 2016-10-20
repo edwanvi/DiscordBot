@@ -16,10 +16,10 @@ candybot = ChatBot("CandyToast",
     input_adapter="chatterbot.adapters.input.VariableInputTypeAdapter",
     # output_adapter="chatterbot.adapters.output.TerminalAdapter",
     database="./candy_toast.json",
-    silence_performance_warning=True
+    silence_performance_warning=True,
+    filters="chatterbot.filters.RepetitiveResponseFilter"
 )
 bots.append(candybot)
-print("Bot CandyToast is now ready for use.")
 # Discord API server bot
 api_memer = ChatBot("Wumpus",
     storage_adapter="chatterbot.adapters.storage.JsonFileStorageAdapter",
@@ -31,14 +31,15 @@ api_memer = ChatBot("Wumpus",
     input_adapter="chatterbot.adapters.input.VariableInputTypeAdapter",
     # output_adapter="chatterbot.adapters.output.TerminalAdapter",
     database="./ratelimit.json",
-    silence_performance_warning=True
+    silence_performance_warning=True,
+    filters="chatterbot.filters.RepetitiveResponseFilter"
 )
 bots.append(api_memer)
-print("Bot Wumpus is now ready for use.")
 # TIIIIINY amount of training on english corpus
 for bot in bots:
     bot.set_trainer(ChatterBotCorpusTrainer)
     bot.train("chatterbot.corpus.english")
+    print(bot.name + " was trained on the english corpus.")
 
 def talk_to_the_dead(message):
     try:
