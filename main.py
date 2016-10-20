@@ -59,7 +59,7 @@ async def on_message(message):
         else:
             await client.send_message(message.channel, "Sorry, you don't have the ability to do that.")
     # repeat after the user
-    elif message.content.startswith('?echo'):
+    elif message.content.startswith('?echo '):
         echo = message.content[6:]
         echoverify = message.content[6:12]
         # YES THE SPACE IS NECESARY
