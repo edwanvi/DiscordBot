@@ -19,7 +19,6 @@ candybot = ChatBot("CandyToast",
     silence_performance_warning=True
 )
 bots.append(candybot)
-print("Bot CandyToast is now ready for use.")
 # Discord API server bot
 api_memer = ChatBot("Wumpus",
     storage_adapter="chatterbot.adapters.storage.JsonFileStorageAdapter",
@@ -34,7 +33,6 @@ api_memer = ChatBot("Wumpus",
     silence_performance_warning=True
 )
 bots.append(api_memer)
-print("Bot Wumpus is now ready for use.")
 # TIIIIINY amount of training on english corpus
 for bot in bots:
     bot.set_trainer(ChatterBotCorpusTrainer)
