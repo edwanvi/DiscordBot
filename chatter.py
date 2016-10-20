@@ -37,6 +37,7 @@ bots.append(api_memer)
 for bot in bots:
     bot.set_trainer(ChatterBotCorpusTrainer)
     bot.train("chatterbot.corpus.english")
+    print(bot.name + " was trained on the english corpus.")
 
 def talk_to_the_dead(message):
     try:
