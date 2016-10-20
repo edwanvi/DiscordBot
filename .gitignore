@@ -98,3 +98,4 @@ database.json
 creds.txt
 *.json
 dayum.py
+debug/
