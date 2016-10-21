@@ -107,6 +107,13 @@ async def on_message(message):
     # ChatBot!
     # TODO: Conversation reset command, using mychatbot.recent_statements.flush()
     # thanks @gunthercox
+    elif message.content == "?resetchatter":
+        if message.server.id == "225619147046780930":
+            chatter.candybot.recent_statements.queue = []
+        elif message.server.id == "81384788765712384":
+            chatter.api_memer.recent_statements.queue = []
+        await client.send_message(message.channel, "Conversation cleared.")
+    # send the message to the actual chatterbot
     elif message.content.startswith(mention):
         message_minus_mention = message.content[len(mention)+1:]
         if message_minus_mention == "say hello" or message_minus_mention == "Say hello":
