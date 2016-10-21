@@ -105,6 +105,8 @@ async def on_message(message):
         await client.delete_message(warnmsg)
 
     # ChatBot!
+    # TODO: Conversation reset command, using mychatbot.recent_statements.flush()
+    # thanks @gunthercox
     elif message.content.startswith(mention):
         message_minus_mention = message.content[len(mention)+1:]
         if message_minus_mention == "say hello" or message_minus_mention == "Say hello":
