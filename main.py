@@ -105,7 +105,7 @@ async def on_message(message):
         await client.delete_message(warnmsg)
 
     # ChatBot!
-    # TODO: Conversation reset command, using mychatbot.recent_statements.flush()
+    # TODO: upgrade chatterbot to allow using mychatbot.recent_statements.flush()
     # thanks @gunthercox
     elif message.content == "?resetchatter":
         if message.server.id == "225619147046780930":
