@@ -109,9 +109,9 @@ async def on_message(message):
     # thanks @gunthercox
     elif message.content == "?resetchatter":
         if message.server.id == "225619147046780930":
-            chatter.candybot.recent_statements.flush()
+            chatter.candybot.recent_statements.queue = []
         elif message.server.id == "81384788765712384":
-            chatter.api_memer.recent_statements.flush()
+            chatter.api_memer.recent_statements.queue = []
         await client.send_message(message.channel, "Conversation cleared.")
     # send the message to the actual chatterbot
     elif message.content.startswith(mention):
