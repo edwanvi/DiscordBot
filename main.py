@@ -16,6 +16,8 @@ print("magi-bot v0.1 starting up")
 client = discord.Client()
 # Open the file that contains the token for the bot.
 token = extrautils.getCreds('creds.txt', 'token')
+# don't mind me
+swarm_id = 225804714141286401
 # read the profile picture into a variable
 with open("magi093.png", 'rb') as f:
     profile = f.read()
@@ -65,7 +67,7 @@ async def on_message(message):
         # YES THE SPACE IS NECESARY
         if echoverify == '?echo ' or echoverify == '?echo' or echo == '':
             pass
-        elif message.author.id != '225804714141286401':
+        elif message.author.id != swarm_id:
             await client.send_message(message.channel, echo)
         else:
             pass
@@ -125,7 +127,7 @@ async def on_message(message):
         elif message_minus_mention.startswith("say goodbye to ") or message_minus_mention.startswith("Say goodbye to "):
             await client.send_message(message.channel, "Goodbye " + message_minus_mention[15:])
         else:
-            if message.server.id == "225619147046780930" and message.author.id != "225804714141286401":
+            if message.server.id == "225619147046780930" and message.author.id != swarm_id:
                 await client.send_typing(message.channel)
                 candy_speaks = chatter.talk_to_the_dead(message.content[len(mention) + 1:])
                 await client.send_message(message.channel, candy_speaks)
@@ -133,7 +135,7 @@ async def on_message(message):
                 await client.send_typing(message.channel)
                 mr_wumpus = chatter.may_i_speak_to_the_wumpus(message.content[len(mention) + 1:])
                 await client.send_message(message.channel, mr_wumpus)
-            elif message.author.id == "225804714141286401":
+            elif message.author.id == swarm_id:
                 pass
             else:
                 await client.send_message(message.channel, "Your server doesn't have a chatterbot configured for it yet!\nGo pester @tkdberger on GitHub to get this fixed!")
