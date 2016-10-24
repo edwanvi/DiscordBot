@@ -16,6 +16,8 @@ print("magi-bot v0.1 starting up")
 client = discord.Client()
 # Open the file that contains the token for the bot.
 token = extrautils.getCreds('creds.txt', 'token')
+# don't mind me
+swarm_id = 225804714141286401
 # read the profile picture into a variable
 with open("magi093.png", 'rb') as f:
     profile = f.read()
@@ -59,13 +61,13 @@ async def on_message(message):
         else:
             await client.send_message(message.channel, "Sorry, you don't have the ability to do that.")
     # repeat after the user
-    elif message.content.startswith('?echo'):
+    elif message.content.startswith('?echo '):
         echo = message.content[6:]
         echoverify = message.content[6:12]
         # YES THE SPACE IS NECESARY
         if echoverify == '?echo ' or echoverify == '?echo' or echo == '':
             pass
-        elif message.author.id != '225804714141286401':
+        elif message.author.id != swarm_id:
             await client.send_message(message.channel, echo)
         else:
             pass
@@ -94,8 +96,8 @@ async def on_message(message):
         else:
             await commands.invite(client, message, invite_id)
     # IDEA: Shorten this somehow. maybe a function that returns true if all this wildbot = commands.check_message_for_wildbot(message)
-    elif commands.check_message_for_wildbot(message):
-        print(message.author.name + " tried to call ++voice or ++request in #" + message.channel.name + ".")
+    elif commands.check_message_for_wildbot(message) or commands.check_message_for_aethex(message):
+        print(message.author.name + " tried to call a music bot in #" + message.channel.name + ".")
         warnmsg = await client.send_message(message.channel, "Please do not [ACTION:POST] [ABSTRACT:THEMES] [LOCATION:HERE]. [ENTITY:HITLERMOD] does not [ACTION:LIKE] that.")
         try:
             await client.delete_message(message)
@@ -105,12 +107,27 @@ async def on_message(message):
         await client.delete_message(warnmsg)
 
     # ChatBot!
+    # TODO: upgrade chatterbot to allow using mychatbot.recent_statements.flush()
+    # thanks @gunthercox
+    elif message.content == "?resetchatter":
+        if message.server.id == "225619147046780930":
+            chatter.candybot.recent_statements.queue = []
+        elif message.server.id == "81384788765712384":
+            chatter.api_memer.recent_statements.queue = []
+        await client.send_message(message.channel, "Conversation cleared.")
+    # send the message to the actual chatterbot
     elif message.content.startswith(mention):
         message_minus_mention = message.content[len(mention)+1:]
-        if message_minus_mention.startswith("say hello to ") or message_minus_mention.startswith("Say hello to "):
-            await client.send_message(message.channel, "hello " + message_minus_mention[13:])
+        if message_minus_mention == "say hello" or message_minus_mention == "Say hello":
+            await client.send_message(message.channel, "Hello!")
+        elif message_minus_mention == "say goodbye" or message_minus_mention == "Say goodbye":
+            await client.send_message(message.channel, "Farewell!")
+        elif message_minus_mention.startswith("say hello to ") or message_minus_mention.startswith("Say hello to "):
+            await client.send_message(message.channel, "Hello " + message_minus_mention[13:])
+        elif message_minus_mention.startswith("say goodbye to ") or message_minus_mention.startswith("Say goodbye to "):
+            await client.send_message(message.channel, "Goodbye " + message_minus_mention[15:])
         else:
-            if message.server.id == "225619147046780930" and message.author.id != "225804714141286401":
+            if message.server.id == "225619147046780930" and message.author.id != swarm_id:
                 await client.send_typing(message.channel)
                 candy_speaks = chatter.talk_to_the_dead(message.content[len(mention) + 1:])
                 await client.send_message(message.channel, candy_speaks)
@@ -118,7 +135,7 @@ async def on_message(message):
                 await client.send_typing(message.channel)
                 mr_wumpus = chatter.may_i_speak_to_the_wumpus(message.content[len(mention) + 1:])
                 await client.send_message(message.channel, mr_wumpus)
-            elif message.author.id == "225804714141286401":
+            elif message.author.id == swarm_id:
                 pass
             else:
                 await client.send_message(message.channel, "Your server doesn't have a chatterbot configured for it yet!\nGo pester @tkdberger on GitHub to get this fixed!")

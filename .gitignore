@@ -90,11 +90,8 @@ ENV/
 .ropeproject
 database.json
 
-# Created by .ignore support plugin (hsz.mobi)
-.idea/workspace.xml
-*.xml
-
 # other misc things
 creds.txt
 *.json
 dayum.py
+debug/
