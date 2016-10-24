@@ -37,11 +37,16 @@ api_memer = ChatBot("Wumpus",
 bots.append(api_memer)
 # TIIIIINY amount of training on english and spanish corpus
 for bot in bots:
-    bot.set_trainer(ChatterBotCorpusTrainer)
-    bot.train("chatterbot.corpus.english")
-    print(bot.name + " was trained on the english corpus.")
-    bot.train("chatterbot.corpus.spanish")
-    print(bot.name + " was trained on the spanish corpus.")
+    f = open(bot.database)
+    if f.read == "" or f.read == None:
+        bot.set_trainer(ChatterBotCorpusTrainer)
+        bot.train("chatterbot.corpus.english")
+        print(bot.name + " was trained on the english corpus.")
+        bot.train("chatterbot.corpus.spanish")
+        print(bot.name + " was trained on the spanish corpus.")
+        f.close()
+    else:
+        f.close()
 
 def talk_to_the_dead(message):
     try:
