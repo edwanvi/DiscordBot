@@ -95,6 +95,8 @@ async def on_message(message):
             await commands.invite(client, message)
         else:
             await commands.invite(client, message, invite_id)
+    # find and delete messages which contain wildbot or aethex voice commands
+    # get a music channel you twits
     elif commands.check_message_for_wildbot(message) or commands.check_message_for_aethex(message):
         print(message.author.name + " tried to call a music bot in #" + message.channel.name + ".")
         warnmsg = await client.send_message(message.channel, "Please do not [ACTION:POST] [ABSTRACT:THEMES] [LOCATION:HERE]. [ENTITY:HITLERMOD] does not [ACTION:LIKE] that.")
