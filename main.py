@@ -128,12 +128,13 @@ async def on_message(message):
         elif message_minus_mention.startswith("say goodbye to ") or message_minus_mention.startswith("Say goodbye to "):
             await client.send_message(message.channel, "Goodbye " + message_minus_mention[15:])
         else:
+            await client.send_typing(message.channel)
+            # worldproblems server
             if message.server.id == "225619147046780930" and message.author.id != swarm_id:
-                await client.send_typing(message.channel)
                 candy_speaks = chatter.talk_to_the_dead(message.content[len(mention) + 1:])
                 await client.send_message(message.channel, candy_speaks)
+            # discord API server
             elif message.server.id == "81384788765712384":
-                await client.send_typing(message.channel)
                 mr_wumpus = chatter.may_i_speak_to_the_wumpus(message.content[len(mention) + 1:])
                 await client.send_message(message.channel, mr_wumpus)
             elif message.author.id == swarm_id:
