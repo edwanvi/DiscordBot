@@ -15,6 +15,7 @@ data = json.load(data_file)
 generalChannels = ["225619147046780930", "225996390587695114", "81402706320699392"]
 # open buddy.txt for reading
 buddy = open('buddy.txt')
+buddytxt = buddy.read()
 
 helptext = " \n".join(
         [
@@ -37,7 +38,7 @@ async def send_help(client, message):
 async def hey_buddy(client, message):
     print('hey there ' + message.author.name + '...')
     # i have no regrets.
-    await client.send_message(message.channel, buddy.read())
+    await client.send_message(message.channel, buddytxt)
 
 async def github(client, message, git_user_name):
     print("Generating Git urls for " + git_user_name)
