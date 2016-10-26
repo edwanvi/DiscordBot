@@ -1,6 +1,6 @@
 """
 The commands that aren't in main.py.
-I hope I can get this to work.
+This *barely* reduces the size of `main.py`.
 """
 # Import the needed modules.
 import extrautils
