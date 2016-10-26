@@ -6,8 +6,6 @@ print("Importing utils")
 import extrautils
 print("Importing commands")
 import commands
-print("Importing call from subprocess")
-from subprocess import call
 print("Importing chatterbot")
 import chatter
 
