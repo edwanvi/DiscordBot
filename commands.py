@@ -11,7 +11,7 @@ import discord
 # Open data.json for reading.
 data_file = open('json_testland.json')
 data = json.load(data_file)
-# variable to hold channels where ++voice, etc etc is banned
+# variable to hold channels where ++voice, -play, etc etc is banned
 generalChannels = ["225619147046780930", "225996390587695114", "81402706320699392"]
 # open buddy.txt for reading
 buddy = open('buddy.txt')
