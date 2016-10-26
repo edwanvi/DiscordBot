@@ -49,16 +49,9 @@ for bot in bots:
         # f.close()
 
 def talk_to_the_dead(message):
-    try:
-        bot_input = candybot.get_response(message)
-        return bot_input
-    # Press ctrl-c or ctrl-d on the keyboard to exit
-    except (KeyboardInterrupt, EOFError, SystemExit):
-        pass
+    bot_input = candybot.get_response(message)
+    return bot_input
 
 def may_i_speak_to_the_wumpus(message):
-    try:
-        bot_input = api_memer.get_response(message)
-        return bot_input
-    except (KeyboardInterrupt, EOFError, SystemExit):
-        pass
+    bot_input = api_memer.get_response(message)
+    return bot_input
