@@ -17,18 +17,20 @@ token = extrautils.getCreds('creds.txt', 'token')
 # don't mind me
 swarm_id = 225804714141286401
 # read the profile picture into a variable
+print("reading profile picture")
 with open("magi093.png", 'rb') as f:
     profile = f.read()
 
 # called when bot becomes ready for use
 @client.event
 async def on_ready():
-    print('Logged in as ' + client.user.name)
-    print('Id: ' + client.user.id)
     # set our profile picture
+    print("setting profile picture")
     await client.edit_profile(avatar=profile)
     # print out a link to invite the bot to a server
     print("Invite link: " + discord.utils.oauth_url("168343655264944128"))
+    print('Logged in as ' + client.user.name)
+    print('Id: ' + client.user.id)
 
 @client.event
 async def on_message(message):
