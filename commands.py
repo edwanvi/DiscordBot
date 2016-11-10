@@ -28,7 +28,8 @@ helptext = " \n".join(
             "`?source`: Gets the bots source as it stands on Github.\n"
             "`?invite`: Prints the link to invite the bot to a server.\n"
             "Debug commands:\n"
-            "`?cease`: stop the bot. Can only be executed by @magi093."
+            "`?cease`: stop the bot. Can only be executed by @magi093.\n"
+            "`?resetchatter`: clear the current chatterbot conversation."
         ])
 
 async def send_help(client, message):

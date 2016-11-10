@@ -28,9 +28,9 @@ async def on_ready():
     print("setting profile picture")
     await client.edit_profile(avatar=profile)
     # print out a link to invite the bot to a server
-    print("Invite link: " + discord.utils.oauth_url("168343655264944128"))
     print('Logged in as ' + client.user.name)
     print('Id: ' + client.user.id)
+    print("Invite link: " + discord.utils.oauth_url("168343655264944128"))
 
 @client.event
 async def on_message(message):
@@ -117,7 +117,7 @@ async def on_message(message):
             chatter.api_memer.recent_statements.queue = []
         await client.send_message(message.channel, "Conversation cleared.")
     # send the message to the actual chatterbot
-    elif message.content.startswith(mention):
+    elif message.content.startswith(mention) and message.author.id != "169087865609912320":
         message_minus_mention = message.content[len(mention)+1:]
         if message_minus_mention == "say hello" or message_minus_mention == "Say hello":
             await client.send_message(message.channel, "Hello!")
