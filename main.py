@@ -15,7 +15,7 @@ client = discord.Client()
 # Open the file that contains the token for the bot.
 token = extrautils.getCreds('creds.txt', 'token')
 # don't mind me
-swarm_id = 225804714141286401
+swarm_id = "225804714141286401"
 # read the profile picture into a variable
 print("reading profile picture")
 with open("magi093.png", 'rb') as f:
@@ -67,7 +67,7 @@ async def on_message(message):
         # YES THE SPACE IS NECESARY
         if echoverify == '?echo ' or echoverify == '?echo' or echo == '':
             pass
-        elif message.author.id != swarm_id:
+        elif message.author.id != swarm_id and message.author.id != '169087865609912320':
             await client.send_message(message.channel, echo)
         else:
             pass
