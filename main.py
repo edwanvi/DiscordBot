@@ -35,7 +35,7 @@ async def on_ready():
 @client.event
 async def on_message(message):
     mention = message.server.me.mention if message.server else bot.user.mention
-    if message.content.startswith('?messagecount'):
+    if message.content.startswith(';;messagecount'):
         counter = 0
         tmp = await client.send_message(message.channel, 'Calculating messages...')
         async for log in client.logs_from(message.channel, limit=100):
@@ -43,16 +43,16 @@ async def on_message(message):
                 counter += 1
         await client.edit_message(tmp, 'You have {} messages, @'.format(counter) + message.author.name)
     # do nothing for 5 seconds. somehow the bot still runs commands whilst waiting
-    elif message.content.startswith('?sleep'):
+    elif message.content.startswith(';;sleep'):
         await asyncio.sleep(5)
         await client.send_message(message.channel, 'Done sleeping.')
     # joke commands
-    elif message.content.startswith('?robot'):
+    elif message.content.startswith(';;robot'):
         await client.send_message(message.channel, 'BLEEP BLOOP')
-    elif message.content.startswith('?bug'):
+    elif message.content.startswith(';;bug'):
         await client.send_message(message.channel, "It's not a bug, it's a feature.")
     # Stop the bot
-    elif message.content == '?cease':
+    elif message.content == ';;cease':
         author = message.author
         authorname = author.id
         if authorname == '164342765394591744':
@@ -61,36 +61,36 @@ async def on_message(message):
         else:
             await client.send_message(message.channel, "Sorry, you don't have the ability to do that.")
     # repeat after the user
-    elif message.content.startswith('?echo '):
-        echo = message.content[6:]
-        echoverify = message.content[6:12]
+    elif message.content.startswith(';;echo '):
+        echo = message.content[7:]
+        echoverify = message.content[7:13]
         # YES THE SPACE IS NECESARY
-        if echoverify == '?echo ' or echoverify == '?echo' or echo == '':
+        if echoverify == ';;echo ' or echoverify == ';;echo' or echo == '':
             pass
         elif message.author.id != swarm_id and message.author.id != '169087865609912320':
             await client.send_message(message.channel, echo)
         else:
             pass
     # tts sh*tposting
-    elif message.content =='?w':
+    elif message.content ==';;w':
         await client.send_message(message.channel, "wwwwwwwwwwwwwww", tts=True)
-    elif message.content.startswith('?dramatic'):
+    elif message.content.startswith(';;dramatic'):
         await client.send_message(message.channel, "dun\ndun\nduuuuuuuuuuun", tts=True)
 
     # run commands from commands.py
-    elif message.content == "?help":
+    elif message.content == ";;help":
         await commands.send_help(client, message)
-    elif message.content.startswith("?heythere"):
+    elif message.content.startswith(";;heythere"):
         await commands.hey_buddy(client, message)
-    elif message.content.startswith("?github"):
-        github_name = message.content[8:]
+    elif message.content.startswith(";;github"):
+        github_name = message.content[9:]
         await commands.github(client, message, github_name)
-    elif message.content.startswith("?source"):
+    elif message.content.startswith(";;source"):
         await commands.source(client, message)
-    elif message.content.startswith("?info"):
+    elif message.content.startswith(";;info"):
         await commands.getUserInfo(client, message)
-    elif message.content.startswith("?invite"):
-        invite_id = message.content[8:]
+    elif message.content.startswith(";;invite"):
+        invite_id = message.content[9:]
         if invite_id == "":
             await commands.invite(client, message)
         else:
@@ -110,7 +110,7 @@ async def on_message(message):
     # ChatBot!
     # TODO: upgrade chatterbot to allow using mychatbot.recent_statements.flush()
     # thanks @gunthercox
-    elif message.content == "?resetchatter":
+    elif message.content == ";;resetchatter":
         if message.server.id == "225619147046780930":
             chatter.candybot.recent_statements.queue = []
         elif message.server.id == "81384788765712384":
