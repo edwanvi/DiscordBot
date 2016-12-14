@@ -137,6 +137,8 @@ async def on_message(message):
             elif message.server.id == "81384788765712384":
                 mr_wumpus = chatter.may_i_speak_to_the_wumpus(message.content[len(mention) + 1:])
                 await client.send_message(message.channel, mr_wumpus)
+            elif message.server.id == "258593341527031810":
+                await client.send_message(message.channel, chatter.fname(message.content[len(mention) + 1:]))
             elif message.author.id == swarm_id:
                 pass
             else:

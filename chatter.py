@@ -35,18 +35,19 @@ api_memer = ChatBot("Wumpus",
     filters="chatterbot.filters.RepetitiveResponseFilter"
 )
 bots.append(api_memer)
-# TIIIIINY amount of training on english and spanish corpus
-for bot in bots:
-    # f = open(bot.database)
-    # if f.read == "" or f.read == None:
-    bot.set_trainer(ChatterBotCorpusTrainer)
-    bot.train("chatterbot.corpus.english")
-    print(bot.name + " was trained on the english corpus.")
-    bot.train("chatterbot.corpus.spanish")
-    print(bot.name + " was trained on the spanish corpus.")
-        # f.close()
-    # else:
-        # f.close()
+admin_server = ChatBot("KenM",
+    storage_adapter="chatterbot.adapters.storage.JsonFileStorageAdapter",
+    logic_adapters=[
+        "chatterbot.adapters.logic.MathematicalEvaluation",
+        "chatterbot.adapters.logic.TimeLogicAdapter",
+        "chatterbot.adapters.logic.ClosestMatchAdapter"
+    ],
+    input_adapter="chatterbot.adapters.input.VariableInputTypeAdapter",
+    database="./admin.json",
+    silence_performance_warning=True,
+    filters="chatterbot.filters.RepetitiveResponseFilter"
+)
+bots.append(admin_server)
 
 def talk_to_the_dead(message):
     bot_input = candybot.get_response(message)
@@ -54,4 +55,7 @@ def talk_to_the_dead(message):
 
 def may_i_speak_to_the_wumpus(message):
     bot_input = api_memer.get_response(message)
+    return bot_input
+def fname(arg):
+    bot_input = admin_server.get_response(arg)
     return bot_input
