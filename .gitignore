@@ -92,6 +92,6 @@ database.json
 
 # other misc things
 creds.txt
-*.json
+# *.json
 dayum.py
 debug/

@@ -6,46 +6,46 @@ from chatterbot.trainers import ChatterBotCorpusTrainer
 # Right?
 bots = []
 # Create the bot, may CandyToast live on
+print("Reviving dead...")
 candybot = ChatBot("CandyToast",
-    storage_adapter="chatterbot.adapters.storage.JsonFileStorageAdapter",
     logic_adapters=[
-        "chatterbot.adapters.logic.MathematicalEvaluation",
-        "chatterbot.adapters.logic.TimeLogicAdapter",
-        "chatterbot.adapters.logic.ClosestMatchAdapter"
+        "chatterbot.logic.MathematicalEvaluation",
+        "chatterbot.logic.TimeLogicAdapter",
+        "chatterbot.logic.ClosestMatchAdapter"
     ],
-    input_adapter="chatterbot.adapters.input.VariableInputTypeAdapter",
+    input_adapter="chatterbot.input.VariableInputTypeAdapter",
     # output_adapter="chatterbot.adapters.output.TerminalAdapter",
     database="./candy_toast.json",
     silence_performance_warning=True,
-    filters="chatterbot.filters.RepetitiveResponseFilter"
+    filters=["chatterbot.filters.RepetitiveResponseFilter"]
 )
 bots.append(candybot)
 # Discord API server bot
+print("Abusing API...")
 api_memer = ChatBot("Wumpus",
-    storage_adapter="chatterbot.adapters.storage.JsonFileStorageAdapter",
     logic_adapters=[
-        "chatterbot.adapters.logic.MathematicalEvaluation",
-        "chatterbot.adapters.logic.TimeLogicAdapter",
-        "chatterbot.adapters.logic.ClosestMatchAdapter"
+        "chatterbot.logic.MathematicalEvaluation",
+        "chatterbot.logic.TimeLogicAdapter",
+        "chatterbot.logic.ClosestMatchAdapter"
     ],
-    input_adapter="chatterbot.adapters.input.VariableInputTypeAdapter",
-    # output_adapter="chatterbot.adapters.output.TerminalAdapter",
+    input_adapter="chatterbot.input.VariableInputTypeAdapter",
+   # output_adapter="chatterbot.adapters.output.TerminalAdapter",
     database="./ratelimit.json",
     silence_performance_warning=True,
     filters="chatterbot.filters.RepetitiveResponseFilter"
 )
 bots.append(api_memer)
+print("Reticulating splines...")
 admin_server = ChatBot("KenM",
-    storage_adapter="chatterbot.adapters.storage.JsonFileStorageAdapter",
     logic_adapters=[
-        "chatterbot.adapters.logic.MathematicalEvaluation",
-        "chatterbot.adapters.logic.TimeLogicAdapter",
-        "chatterbot.adapters.logic.ClosestMatchAdapter"
+        "chatterbot.logic.MathematicalEvaluation",
+        "chatterbot.logic.TimeLogicAdapter",
+        "chatterbot.logic.ClosestMatchAdapter"
     ],
-    input_adapter="chatterbot.adapters.input.VariableInputTypeAdapter",
+    input_adapter="chatterbot.input.VariableInputTypeAdapter",
     database="./admin.json",
-    silence_performance_warning=True,
-    filters="chatterbot.filters.RepetitiveResponseFilter"
+#   silence_performance_warning=True,
+#   filters="chatterbot.filters.RepetitiveResponseFilter"
 )
 bots.append(admin_server)
 
