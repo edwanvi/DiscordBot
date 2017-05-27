@@ -11,13 +11,13 @@ candybot = ChatBot("CandyToast",
     logic_adapters=[
         "chatterbot.logic.MathematicalEvaluation",
         "chatterbot.logic.TimeLogicAdapter",
-        "chatterbot.logic.ClosestMatchAdapter"
+        "chatterbot.logic.BestMatch"
     ],
     input_adapter="chatterbot.input.VariableInputTypeAdapter",
     # output_adapter="chatterbot.adapters.output.TerminalAdapter",
     database="./candy_toast.json",
     silence_performance_warning=True,
-    filters=["chatterbot.filters.RepetitiveResponseFilter"]
+#    filters=["chatterbot.filters.RepetitiveResponseFilter"]
 )
 bots.append(candybot)
 # Discord API server bot
@@ -26,13 +26,13 @@ api_memer = ChatBot("Wumpus",
     logic_adapters=[
         "chatterbot.logic.MathematicalEvaluation",
         "chatterbot.logic.TimeLogicAdapter",
-        "chatterbot.logic.ClosestMatchAdapter"
+        "chatterbot.logic.BestMatch"
     ],
     input_adapter="chatterbot.input.VariableInputTypeAdapter",
    # output_adapter="chatterbot.adapters.output.TerminalAdapter",
     database="./ratelimit.json",
     silence_performance_warning=True,
-    filters="chatterbot.filters.RepetitiveResponseFilter"
+#    filters=["chatterbot.filters.RepetitiveResponseFilter"]
 )
 bots.append(api_memer)
 print("Reticulating splines...")
@@ -40,7 +40,7 @@ admin_server = ChatBot("KenM",
     logic_adapters=[
         "chatterbot.logic.MathematicalEvaluation",
         "chatterbot.logic.TimeLogicAdapter",
-        "chatterbot.logic.ClosestMatchAdapter"
+        "chatterbot.logic.BestMatch"
     ],
     input_adapter="chatterbot.input.VariableInputTypeAdapter",
     database="./admin.json",
