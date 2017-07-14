@@ -24,9 +24,15 @@ async def robot():
 
 @bot.command(description="Echoes a message. No recursing!")
 async def echo(*, message: str):
-    if not (message.startswith(bot.command_prefix)):
+    if not (message.startswith(bot.command_prefix)) and not message.lower().startswith("the human mind loves repetition"):
         await bot.say(message)
+    else:
+        pass
 
-bot.load_extension("memeage")
-bot.load_extension("control")
-bot.run('token')
+extensions = ["memeage", "control", "chattery"]
+for name in extensions:
+    print("Loading " + name)
+    bot.load_extension(name)
+
+print("Running bot...")
+bot.run('your_token_here')
