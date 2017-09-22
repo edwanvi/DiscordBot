@@ -6,6 +6,7 @@ import discord
 from discord.ext import commands
 print("Importing asyncio")
 import asyncio
+import extrautils
 
 # create bot
 bot = commands.Bot(command_prefix='[] ', description="One hell of a dank meme.")
@@ -29,10 +30,11 @@ async def echo(*, message: str):
     else:
         pass
 
-extensions = ["memeage", "control", "chattery"]
+extensions = ["memeage", "control", "chattery", "dungeons"]
 for name in extensions:
     print("Loading " + name)
     bot.load_extension(name)
 
 print("Running bot...")
-bot.run('your_token_here')
+token = extrautils.getCreds('creds.txt', 'token')
+bot.run(token)
