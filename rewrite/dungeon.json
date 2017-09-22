@@ -1,0 +1,54 @@
+{
+    "173023008494059522" : {
+        "name": "Frederic Granos",
+	"age": "24",
+	"race": "Human",
+	"class": "Cleric",
+	"thumbnail": "https://www.realmeye.com/s/a/img/wiki/Priest_1.PNG",
+	"strength": 15,
+	"intelligence": 14,
+	"wisdom": 15,
+	"charisma": 17,
+	"constitution": 12,
+	"dexterity": 8
+    },
+    "216727920826253313": {
+        "name": "Rassesh Silverhands",
+	"age": 105,
+	"race": "High Elf",
+	"class": "Rogue",
+	"thumbnail": "https://www.realmeye.com/s/a/img/wiki/Rogue.PNG",
+	"strength": 11,
+	"intelligence": 16,
+	"wisdom": 11,
+	"charisma": 13,
+	"constitution": 10,
+	"dexterity": 13
+    },
+    "164342765394591744": {
+        "name": "Edwan Vi",
+	"age": 16,
+	"race": "Human",
+	"class": "DM",
+	"thumbnail": "https://www.realmeye.com/s/a/img/wiki/Mystic_0.png",
+	"strength": 30,
+	"intelligence": 30,
+	"wisdom": 30,
+	"charisma": 30,
+	"constitution": 30,
+	"dexterity": 30
+    },
+    "225804714141286401": {
+        "name": "Zmarw the Angery",
+	"age": 200,
+	"race": "Mountain Dwarf",
+	"class": "Barbarian",
+	"strength": 17,
+	"dexterity": 10,
+	"constitution": 16,
+	"intelligence": 8,
+	"wisdom": 10,
+	"charisma": 7,
+	"thumbnail": "https://www.realmeye.com/s/a/img/wiki/Warrior_1.PNG"
+    }
+}
