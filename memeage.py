@@ -4,7 +4,7 @@ from discord.ext import commands
 class memeage():
     def __init__(self, bot):
         self.bot = bot
-        buddy = open('../buddy.txt')
+        buddy = open('buddy.txt')
         """
         The hey there buddy copypasta as a single string.
         Because I hate you all.
