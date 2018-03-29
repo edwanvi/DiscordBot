@@ -30,6 +30,13 @@ async def echo(*, message: str):
     else:
         pass
 
+@bot.command(description="For 3494 members only", pass_context=True)
+async def competition(ctx, member: discord.Member = None):
+    if (member is None and ctx.message.server.id == "286174293006745601"):
+        member = ctx.message.author
+    await bot.add_roles(member, discord.utils.get(ctx.message.server.roles, name="Competition"))
+    await bot.say("Gave {} the competition role".format(member.mention))
+
 extensions = ["memeage", "control", "chattery", "dungeons"]
 for name in extensions:
     print("Loading " + name)
